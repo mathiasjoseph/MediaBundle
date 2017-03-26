@@ -1,13 +1,13 @@
 {
-  "name" : "mikycorp/adminbundle",
-  "description" : "A Admin bundle",
+  "name" : "mikycorp/mediabundle",
+  "description" : "A Media bundle",
   "type" : "symfony-bundle",
   "authors" : [{
     "name" : "Mathias Joseph",
     "email" : "mathias89100@gmail.com"
   }],
   "keywords" : [
-    "admin bundle"
+    "media bundle"
   ],
   "license" : [
     "MIT"
@@ -27,10 +27,10 @@
   },
   "autoload" : {
     "psr-0" : {
-      "Miky\\Bundle\\AdminBundle" : ""
+      "Miky\\Bundle\\MediaBundle" : ""
     }
   },
-  "target-dir" : "Miky/Bundle/AdminBundle",
+  "target-dir" : "Miky/Bundle/MediaBundle",
   "repositories" : [{
   }],
   "extra" : {

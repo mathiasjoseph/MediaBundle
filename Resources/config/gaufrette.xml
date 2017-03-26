@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="adevis.media.metadata.proxy.class">Miky\Bundle\MediaBundle\Metadata\ProxyMetadataBuilder</parameter>
+        <parameter key="adevis.media.metadata.amazon.class">Miky\Bundle\MediaBundle\Metadata\AmazonMetadataBuilder</parameter>
+        <parameter key="adevis.media.metadata.noop.class">Miky\Bundle\MediaBundle\Metadata\NoopMetadataBuilder</parameter>
+        <parameter key="adevis.media.adapater.filesystem.opencloud.class"/>
+    </parameters>
+    <services>
+        <service id="adevis.media.adapter.filesystem.local" class="Miky\Bundle\MediaBundle\Filesystem\Local"/>
+        <service id="adevis.media.adapter.filesystem.ftp" class="Gaufrette\Adapter\Ftp"/>
+        <service id="adevis.media.adapter.service.s3" class="Aws\S3\S3Client">
+            <!-- NEXT_MAJOR: Uncomment Following line
+            <factory class="Aws\S3\S3Client" method="factory"/>
+            -->
+            <argument type="collection"/>
+        </service>
+        <service id="adevis.media.adapter.filesystem.s3" class="Gaufrette\Adapter\AwsS3">
+            <argument/>
+            <argument/>
+            <argument/>
+        </service>
+        <service id="adevis.media.adapter.filesystem.replicate" class="Miky\Bundle\MediaBundle\Filesystem\Replicate">
+            <argument/>
+            <argument/>
+            <argument type="service" id="logger"/>
+        </service>
+        <service id="adevis.media.adapter.filesystem.mogilefs" class="Gaufrette\Adapter\MogileFS">
+            <argument/>
+            <argument/>
+        </service>
+        <service id="adevis.media.adapter.filesystem.opencloud" class="Gaufrette\Adapter\OpenCloud">
+            <argument type="service" id="adevis.media.adapter.filesystem.opencloud.objectstore"/>
+            <argument/>
+            <argument/>
+        </service>
+        <service id="adevis.media.adapter.filesystem.opencloud.connection" class="%adevis.media.adapter.filesystem.opencloud.class%">
+            <argument/>
+            <argument/>
+        </service>
+        <service id="adevis.media.adapter.filesystem.opencloud.objectstore" class="OpenCloud\ObjectSource\Service">
+            <!-- NEXT_MAJOR: Uncomment Following line
+            <factory service="adevis.media.adapter.filesystem.opencloud.connection" method="ObjectStore"/>
+            -->
+            <argument/>
+            <argument/>
+        </service>
+        <service id="adevis.media.filesystem.mogilefs" class="Gaufrette\Filesystem">
+            <argument type="service" id="adevis.media.adapter.filesystem.mogilefs"/>
+        </service>
+        <service id="adevis.media.filesystem.ftp" class="Gaufrette\Filesystem">
+            <argument type="service" id="adevis.media.adapter.filesystem.ftp"/>
+        </service>
+        <service id="adevis.media.filesystem.local" class="Gaufrette\Filesystem">
+            <argument type="service" id="adevis.media.adapter.filesystem.local"/>
+        </service>
+        <service id="adevis.media.filesystem.s3" class="Gaufrette\Filesystem">
+            <argument type="service" id="adevis.media.adapter.filesystem.s3"/>
+        </service>
+        <service id="adevis.media.filesystem.replicate" class="Gaufrette\Filesystem">
+            <argument type="service" id="adevis.media.adapter.filesystem.replicate"/>
+        </service>
+        <service id="adevis.media.metadata.proxy" class="%adevis.media.metadata.proxy.class%">
+            <argument type="service" id="service_container"/>
+        </service>
+        <service id="adevis.media.metadata.amazon" class="%adevis.media.metadata.amazon.class%">
+        </service>
+        <service id="adevis.media.metadata.noop" class="%adevis.media.metadata.noop.class%">
+        </service>
+    </services>
+</container>

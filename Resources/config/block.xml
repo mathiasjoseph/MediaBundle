@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="adevis.media.block.media.class">Miky\Bundle\MediaBundle\Block\MediaBlockService</parameter>
+        <parameter key="adevis.media.block.feature_media.class">Miky\Bundle\MediaBundle\Block\FeatureMediaBlockService</parameter>
+        <parameter key="adevis.media.block.gallery.class">Miky\Bundle\MediaBundle\Block\GalleryBlockService</parameter>
+        <parameter key="adevis.media.block.gallery_list.class">Miky\Bundle\MediaBundle\Block\GalleryListBlockService</parameter>
+    </parameters>
+    <services>
+        <service id="adevis.media.block.media" class="%adevis.media.block.media.class%">
+            <tag name="sonata.block"/>
+            <argument>adevis.media.block.media</argument>
+            <argument type="service" id="templating"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="adevis.media.manager.media"/>
+        </service>
+        <service id="adevis.media.block.feature_media" class="%adevis.media.block.feature_media.class%">
+            <tag name="sonata.block"/>
+            <argument>adevis.media.block.feature_media</argument>
+            <argument type="service" id="templating"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="adevis.media.manager.media"/>
+        </service>
+        <service id="adevis.media.block.gallery" class="%adevis.media.block.gallery.class%">
+            <tag name="sonata.block"/>
+            <argument>adevis.media.block.gallery</argument>
+            <argument type="service" id="templating"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="adevis.media.manager.gallery"/>
+        </service>
+        <service id="adevis.media.block.gallery_list" class="%adevis.media.block.gallery_list.class%">
+            <tag name="sonata.block"/>
+            <argument>adevis.media.block.gallery_list</argument>
+            <argument type="service" id="templating"/>
+            <argument type="service" id="adevis.media.manager.gallery"/>
+            <argument type="service" id="adevis.media.pool"/>
+        </service>
+    </services>
+</container>
