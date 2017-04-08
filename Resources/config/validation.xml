@@ -7,7 +7,7 @@
             </option>
         </constraint>
         <constraint name="Sonata\CoreBundle\Validator\Constraints\InlineConstraint">
-            <option name="service">adevis.media.pool</option>
+            <option name="service">miky.media.pool</option>
             <option name="method">validate</option>
         </constraint>
         <property name="name">
@@ -23,7 +23,7 @@
             <constraint name="NotBlank"/>
         </property>
     </class>
-    <class name="Miky\Bundle\MediaBundle\Model\Gallery">
+    <class name="Miky\Component\Media\Model\Gallery">
         <constraint name="Miky\Bundle\MediaBundle\Validator\Constraints\ValidMediaFormat"/>
         <property name="galleryHasMedias">
             <constraint name="Valid"/>

@@ -68,7 +68,7 @@ class MediaExtension extends \Twig_Extension implements \Twig_Extension_InitRunt
      */
     public function getName()
     {
-        return 'adevis_media';
+        return 'miky_media';
     }
 
     /**

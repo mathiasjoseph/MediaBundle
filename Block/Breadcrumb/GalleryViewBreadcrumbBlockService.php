@@ -43,7 +43,7 @@ class GalleryViewBreadcrumbBlockService extends BaseGalleryBreadcrumbBlockServic
 
         if ($gallery = $blockContext->getBlock()->getSetting('gallery')) {
             $menu->addChild($gallery->getName(), array(
-                'route' => 'adevis_media_gallery_view',
+                'route' => 'miky_media_gallery_view',
                 'routeParameters' => array(
                     'id' => $gallery->getId(),
                 ),

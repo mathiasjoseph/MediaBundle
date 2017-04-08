@@ -147,7 +147,7 @@ class MediaType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'adevis_media_type';
+        return 'miky_media_type';
     }
 
     /**

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="adevis.media.extra.pixlr" class="Miky\Bundle\MediaBundle\Extra\Pixlr">
+        <service id="miky.media.extra.pixlr" class="Miky\Bundle\MediaBundle\Extra\Pixlr">
             <argument/>
             <argument/>
-            <argument type="service" id="adevis.media.pool"/>
-            <argument type="service" id="adevis.media.manager.media"/>
+            <argument type="service" id="miky.media.pool"/>
+            <argument type="service" id="miky.media.manager.media"/>
             <argument type="service" id="router"/>
             <argument type="service" id="templating"/>
             <argument type="service" id="service_container"/>

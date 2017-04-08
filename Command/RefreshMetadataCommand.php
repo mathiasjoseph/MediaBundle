@@ -30,7 +30,7 @@ class RefreshMetadataCommand extends BaseCommand
      */
     public function configure()
     {
-        $this->setName('adevis.media:refresh-metadata')
+        $this->setName('miky.media:refresh-metadata')
             ->setDescription('Refresh meta information')
             ->setDefinition(array(
                 new InputArgument('providerName', InputArgument::OPTIONAL, 'The provider'),

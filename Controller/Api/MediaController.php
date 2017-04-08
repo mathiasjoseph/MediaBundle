@@ -240,7 +240,7 @@ class MediaController
      *  requirements={
      *      {"name"="id", "dataType"="integer", "requirement"="\d+", "description"="medium identifier"}
      *  },
-     *  input={"class"="adevis_media_api_form_media", "name"="", "groups"={"sonata_api_write"}},
+     *  input={"class"="miky_media_api_form_media", "name"="", "groups"={"sonata_api_write"}},
      *  output={"class"="Miky\Bundle\MediaBundle\Model\Media", "groups"={"sonata_api_read"}},
      *  statusCodes={
      *      200="Returned when successful",
@@ -278,7 +278,7 @@ class MediaController
      *
      * @ApiDoc(
      *  resource=true,
-     *  input={"class"="adevis_media_api_form_media", "name"="", "groups"={"sonata_api_write"}},
+     *  input={"class"="miky_media_api_form_media", "name"="", "groups"={"sonata_api_write"}},
      *  output={"class"="Miky\Bundle\MediaBundle\Model\Media", "groups"={"sonata_api_read"}},
      *  statusCodes={
      *      200="Returned when successful",
@@ -376,7 +376,7 @@ class MediaController
      */
     protected function handleWriteMedium(Request $request, MediaInterface $media, MediaProviderInterface $provider)
     {
-        $form = $this->formFactory->createNamed(null, 'adevis_media_api_form_media', $media, array(
+        $form = $this->formFactory->createNamed(null, 'miky_media_api_form_media', $media, array(
             'provider_name' => $provider->getName(),
             'csrf_protection' => false,
         ));

@@ -32,7 +32,7 @@ class UpdateCdnStatusCommand extends BaseCommand
      */
     public function configure()
     {
-        $this->setName('adevis.media:update-cdn-status')
+        $this->setName('miky.media:update-cdn-status')
             ->setDescription('Refresh CDN status for medias that are in status flushing')
             ->setDefinition(array(
                 new InputArgument('providerName', InputArgument::OPTIONAL, 'The provider'),

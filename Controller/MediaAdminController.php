@@ -22,7 +22,7 @@ class MediaAdminController extends Controller
 
         if (!$request->get('provider') && $request->isMethod('get')) {
             return $this->render('MikyMediaBundle:MediaAdmin:select_provider.html.twig', array(
-                'providers' => $this->get('adevis.media.pool')->getProvidersByContext($request->get('context', $this->get('adevis.media.pool')->getDefaultContext())),
+                'providers' => $this->get('miky.media.pool')->getProvidersByContext($request->get('context', $this->get('miky.media.pool')->getDefaultContext())),
                 'base_template' => $this->getBaseTemplate(),
                 'admin' => $this->admin,
                 'action' => 'create',
@@ -37,7 +37,7 @@ class MediaAdminController extends Controller
      */
     public function render($view, array $parameters = array(), Response $response = null, Request $request = null)
     {
-        $parameters['media_pool'] = $this->container->get('adevis.media.pool');
+        $parameters['media_pool'] = $this->container->get('miky.media.pool');
         $parameters['persistent_parameters'] = $this->admin->getPersistentParameters();
 
         return parent::render($view, $parameters, $response, $request);
@@ -62,7 +62,7 @@ class MediaAdminController extends Controller
 
         // set the default context
         if (!$filters || !array_key_exists('context', $filters)) {
-            $context = $this->admin->getPersistentParameter('context', $this->get('adevis.media.pool')->getDefaultContext());
+            $context = $this->admin->getPersistentParameter('context', $this->get('miky.media.pool')->getDefaultContext());
         } else {
             $context = $filters['context']['value'];
         }

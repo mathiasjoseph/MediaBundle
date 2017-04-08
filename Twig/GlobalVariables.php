@@ -30,7 +30,7 @@ class GlobalVariables
      */
     public function getPixlr()
     {
-        return $this->container->has('adevis.media.extra.pixlr') ? $this->container->get('adevis.media.extra.pixlr') : false;
+        return $this->container->has('miky.media.extra.pixlr') ? $this->container->get('miky.media.extra.pixlr') : false;
     }
 
     /**
@@ -38,6 +38,6 @@ class GlobalVariables
      */
     public function getPool()
     {
-        return $this->container->get('adevis.media.pool');
+        return $this->container->get('miky.media.pool');
     }
 }

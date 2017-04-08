@@ -20,6 +20,6 @@ class GlobalVariablesCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        $container->getDefinition('twig')->addMethodCall('addGlobal', array('adevis_media', new Reference('adevis.media.twig.global')));
+        $container->getDefinition('twig')->addMethodCall('addGlobal', array('miky_media', new Reference('miky.media.twig.global')));
     }
 }

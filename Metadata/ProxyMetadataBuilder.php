@@ -42,11 +42,11 @@ class ProxyMetadataBuilder implements MetadataBuilderInterface
             return $meta;
         }
 
-        if (!$this->container->has('adevis.media.metadata.noop')) {
+        if (!$this->container->has('miky.media.metadata.noop')) {
             return array();
         }
 
-        return $this->container->get('adevis.media.metadata.noop')->get($media, $filename);
+        return $this->container->get('miky.media.metadata.noop')->get($media, $filename);
     }
 
     /**
@@ -67,10 +67,10 @@ class ProxyMetadataBuilder implements MetadataBuilderInterface
         }
 
         //for amazon s3
-        if ((!in_array('Gaufrette\Adapter\AmazonS3', $adapterClassNames) && !in_array('Gaufrette\Adapter\AwsS3', $adapterClassNames)) || !$this->container->has('adevis.media.metadata.amazon')) {
+        if ((!in_array('Gaufrette\Adapter\AmazonS3', $adapterClassNames) && !in_array('Gaufrette\Adapter\AwsS3', $adapterClassNames)) || !$this->container->has('miky.media.metadata.amazon')) {
             return false;
         }
 
-        return $this->container->get('adevis.media.metadata.amazon')->get($media, $filename);
+        return $this->container->get('miky.media.metadata.amazon')->get($media, $filename);
     }
 }

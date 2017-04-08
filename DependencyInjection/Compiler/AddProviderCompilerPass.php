@@ -25,9 +25,9 @@ class AddProviderCompilerPass implements CompilerPassInterface
         $this->attachArguments($container, $settings);
         $this->attachProviders($container);
 
-        $format = $container->getParameter('adevis.media.admin_format');
+        $format = $container->getParameter('miky.media.admin_format');
 
-        foreach ($container->findTaggedServiceIds('adevis.media.provider') as $id => $attributes) {
+        foreach ($container->findTaggedServiceIds('miky.media.provider') as $id => $attributes) {
             $container->getDefinition($id)->addMethodCall('addFormat', array('admin', $format));
         }
     }
@@ -39,7 +39,7 @@ class AddProviderCompilerPass implements CompilerPassInterface
      */
     public function fixSettings(ContainerBuilder $container)
     {
-        $pool = $container->getDefinition('adevis.media.pool');
+        $pool = $container->getDefinition('miky.media.pool');
 
         // not very clean but don't know how to do that for now
         $settings = false;
@@ -65,8 +65,8 @@ class AddProviderCompilerPass implements CompilerPassInterface
      */
     public function attachProviders(ContainerBuilder $container)
     {
-        $pool = $container->getDefinition('adevis.media.pool');
-        foreach ($container->findTaggedServiceIds('adevis.media.provider') as $id => $attributes) {
+        $pool = $container->getDefinition('miky.media.pool');
+        foreach ($container->findTaggedServiceIds('miky.media.provider') as $id => $attributes) {
             $pool->addMethodCall('addProvider', array($id, new Reference($id)));
         }
     }
@@ -77,7 +77,7 @@ class AddProviderCompilerPass implements CompilerPassInterface
      */
     public function attachArguments(ContainerBuilder $container, array $settings)
     {
-        foreach ($container->findTaggedServiceIds('adevis.media.provider') as $id => $attributes) {
+        foreach ($container->findTaggedServiceIds('miky.media.provider') as $id => $attributes) {
             foreach ($settings['providers'] as $name => $config) {
                 if ($config['service'] == $id) {
                     $definition = $container->getDefinition($id);

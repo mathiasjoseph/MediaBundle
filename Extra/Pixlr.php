@@ -109,10 +109,10 @@ class Pixlr
         $parameters = array(
             's' => 'c', // ??
             'referrer' => $this->referrer,
-            'exit' => $this->router->generate('adevis_media_pixlr_exit', array('hash' => $hash, 'id' => $media->getId()), UrlGeneratorInterface::ABSOLUTE_URL),
+            'exit' => $this->router->generate('miky_media_pixlr_exit', array('hash' => $hash, 'id' => $media->getId()), UrlGeneratorInterface::ABSOLUTE_URL),
             'image' => $provider->generatePublicUrl($media, 'reference'),
             'title' => $media->getName(),
-            'target' => $this->router->generate('adevis_media_pixlr_target', array('hash' => $hash, 'id' => $media->getId()), UrlGeneratorInterface::ABSOLUTE_URL),
+            'target' => $this->router->generate('miky_media_pixlr_target', array('hash' => $hash, 'id' => $media->getId()), UrlGeneratorInterface::ABSOLUTE_URL),
             'locktitle' => true,
             'locktarget' => true,
         );
@@ -177,7 +177,7 @@ class Pixlr
      */
     public function isEditable(MediaInterface $media)
     {
-        if (!$this->container->get('adevis.media.admin.media')->isGranted('EDIT', $media)) {
+        if (!$this->container->get('miky.media.admin.media')->isGranted('EDIT', $media)) {
             return false;
         }
 

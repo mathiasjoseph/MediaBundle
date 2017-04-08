@@ -20,7 +20,7 @@ abstract class BaseCommand extends ContainerAwareCommand
      */
     public function getMediaManager()
     {
-        return $this->getContainer()->get('adevis.media.manager.media');
+        return $this->getContainer()->get('miky.media.manager.media');
     }
 
     /**
@@ -28,6 +28,6 @@ abstract class BaseCommand extends ContainerAwareCommand
      */
     public function getMediaPool()
     {
-        return $this->getContainer()->get('adevis.media.pool');
+        return $this->getContainer()->get('miky.media.pool');
     }
 }

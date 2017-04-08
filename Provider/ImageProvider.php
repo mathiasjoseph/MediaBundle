@@ -59,7 +59,7 @@ class ImageProvider extends FileProvider
             $resizerFormat = $this->getFormat($format);
             if ($resizerFormat === false) {
                 throw new \RuntimeException(sprintf('The image format "%s" is not defined.
-                        Is the format registered in your ``adevis_media`` configuration?', $format));
+                        Is the format registered in your ``miky_media`` configuration?', $format));
             }
 
             $box = $this->resizer->getBox($media, $resizerFormat);

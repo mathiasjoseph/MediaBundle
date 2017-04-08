@@ -70,7 +70,7 @@ class ConsumerThumbnail implements ThumbnailInterface
         $id = $this->id;
 
         $publish = function () use ($backend, $media, $id) {
-            $backend->createAndPublish('adevis.media.create_thumbnail', array(
+            $backend->createAndPublish('miky.media.create_thumbnail', array(
                 'thumbnailId' => $id,
                 'mediaId' => $media->getId(),
 

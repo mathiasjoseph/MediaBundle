@@ -18,7 +18,7 @@ class ValidMediaFormat extends Constraint
      */
     public function validatedBy()
     {
-        return 'adevis.media.validator.format';
+        return 'miky.media.validator.format';
     }
 
     /**

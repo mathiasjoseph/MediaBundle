@@ -15,7 +15,7 @@ class MigrateToJsonTypeCommand extends BaseCommand
      */
     public function configure()
     {
-        $this->setName('adevis.media:migrate-json');
+        $this->setName('miky.media:migrate-json');
         $this->addOption('table', null, InputOption::VALUE_OPTIONAL, 'Media table', 'media__media');
         $this->addOption('column', null, InputOption::VALUE_OPTIONAL, 'Column name for provider_metadata', 'provider_metadata');
         $this->addOption('column_id', null, InputOption::VALUE_OPTIONAL, 'Column name for id', 'id');

@@ -43,7 +43,7 @@ class MediaViewBreadcrumbBlockService extends BaseGalleryBreadcrumbBlockService
 
         if ($media = $blockContext->getBlock()->getSetting('media')) {
             $menu->addChild($media->getName(), array(
-                'route' => 'adevis_media_view',
+                'route' => 'miky_media_view',
                 'routeParameters' => array(
                     'id' => $media->getId(),
                 ),

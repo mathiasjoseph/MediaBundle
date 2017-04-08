@@ -20,7 +20,7 @@ class AddMassMediaCommand extends BaseCommand
      */
     public function configure()
     {
-        $this->setName('adevis.media:add-multiple')
+        $this->setName('miky.media:add-multiple')
             ->setDescription('Add medias in mass into the database')
             ->setDefinition(array(
                 new InputOption('file', null, InputOption::VALUE_OPTIONAL, 'The file to parse'),

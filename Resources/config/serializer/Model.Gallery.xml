@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <serializer>
-    <class name="Miky\Bundle\MediaBundle\Model\Gallery" exclusion-policy="all" xml-root-name="gallery">
+    <class name="Miky\Component\Media\Model\Gallery" exclusion-policy="all" xml-root-name="gallery">
         <property name="name" type="string" expose="true" since-version="1.0" groups="sonata_api_read,sonata_api_write,sonata_search"/>
         <property name="context" type="string" expose="true" since-version="1.0" groups="sonata_api_read,sonata_api_write,sonata_search"/>
         <property name="defaultFormat" type="string" expose="true" since-version="1.0" groups="sonata_api_read,sonata_api_write,sonata_search"/>

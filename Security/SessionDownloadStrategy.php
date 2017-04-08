@@ -38,7 +38,7 @@ class SessionDownloadStrategy implements DownloadStrategyInterface
     /**
      * @var string
      */
-    protected $sessionKey = 'adevis.media/session/times';
+    protected $sessionKey = 'miky.media/session/times';
 
     /**
      * @var SessionInterface

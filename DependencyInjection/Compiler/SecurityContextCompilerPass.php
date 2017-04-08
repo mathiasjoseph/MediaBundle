@@ -28,10 +28,10 @@ class SecurityContextCompilerPass implements CompilerPassInterface
             $security = $container->getDefinition('security.context');
         }
 
-        $container->getDefinition('adevis.media.security.superadmin_strategy')
+        $container->getDefinition('miky.media.security.superadmin_strategy')
             ->replaceArgument(1, $security);
 
-        $container->getDefinition('adevis.media.security.connected_strategy')
+        $container->getDefinition('miky.media.security.connected_strategy')
             ->replaceArgument(1, $security);
     }
 }

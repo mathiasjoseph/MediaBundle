@@ -41,7 +41,7 @@ class MediaHelper extends Helper
      */
     public function getName()
     {
-        return 'adevis_media';
+        return 'miky_media';
     }
 
     /**

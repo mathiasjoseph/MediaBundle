@@ -26,7 +26,7 @@ class AddMediaCommand extends BaseCommand
      */
     public function configure()
     {
-        $this->setName('adevis.media:add')
+        $this->setName('miky.media:add')
             ->setDescription('Add a media into the database')
             ->setDefinition(array(
                 new InputArgument('providerName', InputArgument::REQUIRED, 'The provider'),

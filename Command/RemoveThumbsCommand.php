@@ -38,7 +38,7 @@ class RemoveThumbsCommand extends BaseCommand
      */
     public function configure()
     {
-        $this->setName('adevis.media:remove-thumbnails')
+        $this->setName('miky.media:remove-thumbnails')
             ->setDescription('Remove uploaded image thumbs')
             ->setDefinition(array(
                 new InputArgument('providerName', InputArgument::OPTIONAL, 'The provider'),

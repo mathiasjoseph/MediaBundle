@@ -4,10 +4,10 @@
 
 namespace Miky\Bundle\MediaBundle\Controller\Api;
 
-use Miky\Bundle\MediaBundle\Model\GalleryHasMediaInterface;
-use Miky\Bundle\MediaBundle\Model\GalleryInterface;
+use Miky\Component\Media\Model\GalleryHasMediaInterface;
+use Miky\Component\Media\Model\GalleryInterface;
 use Miky\Bundle\MediaBundle\Model\GalleryManagerInterface;
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Model\MediaManagerInterface;
 use FOS\RestBundle\Context\Context;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
@@ -117,7 +117,7 @@ class GalleryController
      *  requirements={
      *      {"name"="id", "dataType"="integer", "requirement"="\d+", "description"="gallery id"}
      *  },
-     *  output={"class"="adevis_media_api_form_gallery", "groups"="sonata_api_read"},
+     *  output={"class"="miky_media_api_form_gallery", "groups"="sonata_api_read"},
      *  statusCodes={
      *      200="Returned when successful",
      *      404="Returned when gallery is not found"
@@ -196,8 +196,8 @@ class GalleryController
      * Adds a gallery.
      *
      * @ApiDoc(
-     *  input={"class"="adevis_media_api_form_gallery", "name"="", "groups"={"sonata_api_write"}},
-     *  output={"class"="adevis_media_api_form_gallery", "groups"={"sonata_api_read"}},
+     *  input={"class"="miky_media_api_form_gallery", "name"="", "groups"={"sonata_api_write"}},
+     *  output={"class"="miky_media_api_form_gallery", "groups"={"sonata_api_read"}},
      *  statusCodes={
      *      200="Returned when successful",
      *      400="Returned when an error has occurred while gallery creation",
@@ -222,8 +222,8 @@ class GalleryController
      *  requirements={
      *      {"name"="id", "dataType"="integer", "requirement"="\d+", "description"="gallery identifier"}
      *  },
-     *  input={"class"="adevis_media_api_form_gallery", "name"="", "groups"={"sonata_api_write"}},
-     *  output={"class"="adevis_media_api_form_gallery", "groups"={"sonata_api_read"}},
+     *  input={"class"="miky_media_api_form_gallery", "name"="", "groups"={"sonata_api_write"}},
+     *  output={"class"="miky_media_api_form_gallery", "groups"={"sonata_api_read"}},
      *  statusCodes={
      *      200="Returned when successful",
      *      400="Returned when an error has occurred while gallery creation",
@@ -251,8 +251,8 @@ class GalleryController
      *      {"name"="galleryId", "dataType"="integer", "requirement"="\d+", "description"="gallery identifier"},
      *      {"name"="mediaId", "dataType"="integer", "requirement"="\d+", "description"="media identifier"}
      *  },
-     *  input={"class"="adevis_media_api_form_gallery_has_media", "name"="", "groups"={"sonata_api_write"}},
-     *  output={"class"="adevis_media_api_form_gallery", "groups"={"sonata_api_read"}},
+     *  input={"class"="miky_media_api_form_gallery_has_media", "name"="", "groups"={"sonata_api_write"}},
+     *  output={"class"="miky_media_api_form_gallery", "groups"={"sonata_api_read"}},
      *  statusCodes={
      *      200="Returned when successful",
      *      400="Returned when an error has occurred while gallery/media attachment",
@@ -291,8 +291,8 @@ class GalleryController
      *      {"name"="galleryId", "dataType"="integer", "requirement"="\d+", "description"="gallery identifier"},
      *      {"name"="mediaId", "dataType"="integer", "requirement"="\d+", "description"="media identifier"}
      *  },
-     *  input={"class"="adevis_media_api_form_gallery_has_media", "name"="", "groups"={"sonata_api_write"}},
-     *  output={"class"="adevis_media_api_form_gallery", "groups"={"sonata_api_read"}},
+     *  input={"class"="miky_media_api_form_gallery_has_media", "name"="", "groups"={"sonata_api_write"}},
+     *  output={"class"="miky_media_api_form_gallery", "groups"={"sonata_api_read"}},
      *  statusCodes={
      *      200="Returned when successful",
      *      404="Returned when an error if media cannot be found in gallery",
@@ -403,7 +403,7 @@ class GalleryController
      */
     protected function handleWriteGalleryhasmedia(GalleryInterface $gallery, MediaInterface $media, GalleryHasMediaInterface $galleryHasMedia = null, Request $request)
     {
-        $form = $this->formFactory->createNamed(null, 'adevis_media_api_form_gallery_has_media', $galleryHasMedia, array(
+        $form = $this->formFactory->createNamed(null, 'miky_media_api_form_gallery_has_media', $galleryHasMedia, array(
             'csrf_protection' => false,
         ));
 
@@ -505,7 +505,7 @@ class GalleryController
     {
         $gallery = $id ? $this->getGallery($id) : null;
 
-        $form = $this->formFactory->createNamed(null, 'adevis_media_api_form_gallery', $gallery, array(
+        $form = $this->formFactory->createNamed(null, 'miky_media_api_form_gallery', $gallery, array(
             'csrf_protection' => false,
         ));
 

@@ -65,7 +65,7 @@ class MediaBlockService extends BaseBlockService
     public function getMediaAdmin()
     {
         if (!$this->mediaAdmin) {
-            $this->mediaAdmin = $this->container->get('adevis.media.admin.media');
+            $this->mediaAdmin = $this->container->get('miky.media.admin.media');
         }
 
         return $this->mediaAdmin;

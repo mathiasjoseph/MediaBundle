@@ -4,7 +4,7 @@
 
 namespace Miky\Bundle\MediaBundle\Document;
 
-use Miky\Bundle\MediaBundle\Model\Gallery;
+use Miky\Component\Media\Model\Gallery;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**

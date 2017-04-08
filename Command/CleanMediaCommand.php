@@ -27,7 +27,7 @@ class CleanMediaCommand extends ContainerAwareCommand
      */
     public function configure()
     {
-        $this->setName('adevis.media:clean-uploads')
+        $this->setName('miky.media:clean-uploads')
             ->setDescription('Find orphaned files in media upload directory')
             ->addOption('dry-run', null, InputOption::VALUE_NONE, 'Execute the cleanup as a dry run. This doesn\'t remove any files');
     }
@@ -40,10 +40,10 @@ class CleanMediaCommand extends ContainerAwareCommand
         $dryRun = (bool) $input->getOption('dry-run');
         $verbose = (bool) $input->getOption('verbose');
 
-        $pool = $this->getContainer()->get('adevis.media.pool');
+        $pool = $this->getContainer()->get('miky.media.pool');
         $finder = Finder::create();
         $filesystem = new Filesystem();
-        $baseDirectory = $this->getContainer()->get('adevis.media.adapter.filesystem.local')->getDirectory();
+        $baseDirectory = $this->getContainer()->get('miky.media.adapter.filesystem.local')->getDirectory();
 
         $output->writeln(sprintf('<info>Scanning upload directory: %s</info>', $baseDirectory));
 
@@ -88,7 +88,7 @@ class CleanMediaCommand extends ContainerAwareCommand
         if (!$this->providers) {
             $this->providers = array();
 
-            $pool = $this->getContainer()->get('adevis.media.pool');
+            $pool = $this->getContainer()->get('miky.media.pool');
 
             foreach ($pool->getProviders() as $provider) {
                 if ($provider instanceof FileProvider) {
@@ -108,7 +108,7 @@ class CleanMediaCommand extends ContainerAwareCommand
      */
     private function mediaExists($filename, $context = null)
     {
-        $mediaManager = $this->getContainer()->get('adevis.media.manager.media');
+        $mediaManager = $this->getContainer()->get('miky.media.manager.media');
 
         $fileParts = explode('_', $filename);
 

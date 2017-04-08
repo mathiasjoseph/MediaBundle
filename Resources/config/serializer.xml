@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="adevis.media.serializer.handler.media" class="Miky\Bundle\MediaBundle\Serializer\MediaSerializerHandler">
+        <service id="miky.media.serializer.handler.media" class="Miky\Bundle\MediaBundle\Serializer\MediaSerializerHandler">
             <tag name="jms_serializer.subscribing_handler"/>
-            <argument type="service" id="adevis.media.manager.media"/>
+            <argument type="service" id="miky.media.manager.media"/>
         </service>
-        <service id="adevis.media.serializer.handler.gallery" class="Miky\Bundle\MediaBundle\Serializer\GallerySerializerHandler">
+        <service id="miky.media.serializer.handler.gallery" class="Miky\Bundle\MediaBundle\Serializer\GallerySerializerHandler">
             <tag name="jms_serializer.subscribing_handler"/>
-            <argument type="service" id="adevis.media.manager.gallery"/>
+            <argument type="service" id="miky.media.manager.gallery"/>
         </service>
     </services>
 </container>

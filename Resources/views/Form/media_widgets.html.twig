@@ -1,9 +1,9 @@
-{% block adevis_media_type_widget %}
+{% block miky_media_type_widget %}
     <div class="row">
         <div class="col-md-4 pull-left">
             {% if value is not empty and value.providerReference %}
                 {% if sonata_admin_enabled is defined and sonata_admin_enabled %}
-                    <a href="{{ sonata_admin.admin.getConfigurationPool().adminByAdminCode('adevis.media.admin.media').generateObjectUrl('edit', value) }}">
+                    <a href="{{ sonata_admin.admin.getConfigurationPool().adminByAdminCode('miky.media.admin.media').generateObjectUrl('edit', value) }}">
                         <strong>{{ value.name }}</strong>
                     </a>
                 {% else %}
@@ -44,4 +44,4 @@
             {{ block('form_widget') }}
         </div>
     </div>
-{% endblock adevis_media_type_widget %}
+{% endblock miky_media_type_widget %}

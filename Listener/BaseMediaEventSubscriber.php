@@ -30,7 +30,7 @@ abstract class BaseMediaEventSubscriber implements EventSubscriber
      */
     public function getPool()
     {
-        return $this->container->get('adevis.media.pool');
+        return $this->container->get('miky.media.pool');
     }
 
     /**

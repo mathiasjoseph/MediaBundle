@@ -16,7 +16,7 @@ class FixMediaContextCommand extends ContainerAwareCommand
      */
     public function configure()
     {
-        $this->setName('adevis.media:fix-media-context');
+        $this->setName('miky.media:fix-media-context');
         $this->setDescription('Generate the default category for each media context');
     }
 
@@ -25,7 +25,7 @@ class FixMediaContextCommand extends ContainerAwareCommand
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $pool = $this->getContainer()->get('adevis.media.pool');
+        $pool = $this->getContainer()->get('miky.media.pool');
         $contextManager = $this->getContainer()->get('sonata.classification.manager.context');
         $cateoryManager = $this->getContainer()->get('sonata.classification.manager.category');
 

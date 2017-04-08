@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="adevis.media.provider.image.class">Miky\Bundle\MediaBundle\Provider\ImageProvider</parameter>
-        <parameter key="adevis.media.provider.file.class">Miky\Bundle\MediaBundle\Provider\FileProvider</parameter>
-        <parameter key="adevis.media.provider.youtube.class">Miky\Bundle\MediaBundle\Provider\YouTubeProvider</parameter>
-        <parameter key="adevis.media.provider.dailymotion.class">Miky\Bundle\MediaBundle\Provider\DailyMotionProvider</parameter>
-        <parameter key="adevis.media.provider.vimeo.class">Miky\Bundle\MediaBundle\Provider\VimeoProvider</parameter>
-        <parameter key="adevis.media.thumbnail.format">Miky\Bundle\MediaBundle\Thumbnail\FormatThumbnail</parameter>
-        <parameter key="adevis.media.thumbnail.format.default">jpg</parameter>
-        <parameter key="adevis.media.thumbnail.liip_imagine">Miky\Bundle\MediaBundle\Thumbnail\LiipImagineThumbnail</parameter>
-        <parameter key="adevis.media.pool.class">Miky\Bundle\MediaBundle\Provider\Pool</parameter>
+        <parameter key="miky.media.provider.image.class">Miky\Bundle\MediaBundle\Provider\ImageProvider</parameter>
+        <parameter key="miky.media.provider.file.class">Miky\Bundle\MediaBundle\Provider\FileProvider</parameter>
+        <parameter key="miky.media.provider.youtube.class">Miky\Bundle\MediaBundle\Provider\YouTubeProvider</parameter>
+        <parameter key="miky.media.provider.dailymotion.class">Miky\Bundle\MediaBundle\Provider\DailyMotionProvider</parameter>
+        <parameter key="miky.media.provider.vimeo.class">Miky\Bundle\MediaBundle\Provider\VimeoProvider</parameter>
+        <parameter key="miky.media.thumbnail.format">Miky\Bundle\MediaBundle\Thumbnail\FormatThumbnail</parameter>
+        <parameter key="miky.media.thumbnail.format.default">jpg</parameter>
+        <parameter key="miky.media.thumbnail.liip_imagine">Miky\Bundle\MediaBundle\Thumbnail\LiipImagineThumbnail</parameter>
+        <parameter key="miky.media.pool.class">Miky\Bundle\MediaBundle\Provider\Pool</parameter>
     </parameters>
     <services>
-        <service id="adevis.media.pool" class="%adevis.media.pool.class%">
+        <service id="miky.media.pool" class="%miky.media.pool.class%">
             <argument/>
         </service>
-        <service id="adevis.media.thumbnail.format" class="%adevis.media.thumbnail.format%">
-            <argument type="string">%adevis.media.thumbnail.format.default%</argument>
+        <service id="miky.media.thumbnail.format" class="%miky.media.thumbnail.format%">
+            <argument type="string">%miky.media.thumbnail.format.default%</argument>
         </service>
-        <service id="adevis.media.thumbnail.liip_imagine" class="%adevis.media.thumbnail.liip_imagine%">
+        <service id="miky.media.thumbnail.liip_imagine" class="%miky.media.thumbnail.liip_imagine%">
             <argument type="service" id="router"/>
         </service>
-        <service id="adevis.media.provider.image" class="%adevis.media.provider.image.class%">
-            <tag name="adevis.media.provider"/>
-            <argument>adevis.media.provider.image</argument>
+        <service id="miky.media.provider.image" class="%miky.media.provider.image.class%">
+            <tag name="miky.media.provider"/>
+            <argument>miky.media.provider.image</argument>
             <argument/>
             <argument/>
             <argument/>
-            <argument type="service" id="adevis.media.thumbnail.format"/>
+            <argument type="service" id="miky.media.thumbnail.format"/>
             <argument/>
             <argument/>
             <argument/>
-            <argument type="service" id="adevis.media.metadata.proxy"/>
+            <argument type="service" id="miky.media.metadata.proxy"/>
             <call method="setTemplates">
                 <argument type="collection">
                     <argument key="helper_thumbnail">MikyMediaBundle:Provider:thumbnail.html.twig</argument>
@@ -39,16 +39,16 @@
                 </argument>
             </call>
         </service>
-        <service id="adevis.media.provider.file" class="%adevis.media.provider.file.class%">
-            <tag name="adevis.media.provider"/>
-            <argument>adevis.media.provider.file</argument>
+        <service id="miky.media.provider.file" class="%miky.media.provider.file.class%">
+            <tag name="miky.media.provider"/>
+            <argument>miky.media.provider.file</argument>
             <argument/>
             <argument/>
             <argument/>
-            <argument type="service" id="adevis.media.thumbnail.format"/>
+            <argument type="service" id="miky.media.thumbnail.format"/>
             <argument/>
             <argument/>
-            <argument type="service" id="adevis.media.metadata.proxy"/>
+            <argument type="service" id="miky.media.metadata.proxy"/>
             <call method="setTemplates">
                 <argument type="collection">
                     <argument key="helper_thumbnail">MikyMediaBundle:Provider:thumbnail.html.twig</argument>
@@ -56,15 +56,15 @@
                 </argument>
             </call>
         </service>
-        <service id="adevis.media.provider.youtube" class="%adevis.media.provider.youtube.class%">
-            <tag name="adevis.media.provider"/>
-            <argument>adevis.media.provider.youtube</argument>
+        <service id="miky.media.provider.youtube" class="%miky.media.provider.youtube.class%">
+            <tag name="miky.media.provider"/>
+            <argument>miky.media.provider.youtube</argument>
             <argument/>
             <argument/>
             <argument/>
-            <argument type="service" id="adevis.media.thumbnail.format"/>
-            <argument type="service" id="adevis.media.buzz.browser"/>
-            <argument type="service" id="adevis.media.metadata.proxy"/>
+            <argument type="service" id="miky.media.thumbnail.format"/>
+            <argument type="service" id="miky.media.buzz.browser"/>
+            <argument type="service" id="miky.media.metadata.proxy"/>
             <argument/>
             <call method="setTemplates">
                 <argument type="collection">
@@ -73,15 +73,15 @@
                 </argument>
             </call>
         </service>
-        <service id="adevis.media.provider.dailymotion" class="%adevis.media.provider.dailymotion.class%">
-            <tag name="adevis.media.provider"/>
-            <argument>adevis.media.provider.dailymotion</argument>
+        <service id="miky.media.provider.dailymotion" class="%miky.media.provider.dailymotion.class%">
+            <tag name="miky.media.provider"/>
+            <argument>miky.media.provider.dailymotion</argument>
             <argument/>
             <argument/>
             <argument/>
-            <argument type="service" id="adevis.media.thumbnail.format"/>
-            <argument type="service" id="adevis.media.buzz.browser"/>
-            <argument type="service" id="adevis.media.metadata.proxy"/>
+            <argument type="service" id="miky.media.thumbnail.format"/>
+            <argument type="service" id="miky.media.buzz.browser"/>
+            <argument type="service" id="miky.media.metadata.proxy"/>
             <call method="setTemplates">
                 <argument type="collection">
                     <argument key="helper_thumbnail">MikyMediaBundle:Provider:thumbnail.html.twig</argument>
@@ -89,15 +89,15 @@
                 </argument>
             </call>
         </service>
-        <service id="adevis.media.provider.vimeo" class="%adevis.media.provider.vimeo.class%">
-            <tag name="adevis.media.provider"/>
-            <argument>adevis.media.provider.vimeo</argument>
+        <service id="miky.media.provider.vimeo" class="%miky.media.provider.vimeo.class%">
+            <tag name="miky.media.provider"/>
+            <argument>miky.media.provider.vimeo</argument>
             <argument/>
             <argument/>
             <argument/>
-            <argument type="service" id="adevis.media.thumbnail.format"/>
-            <argument type="service" id="adevis.media.buzz.browser"/>
-            <argument type="service" id="adevis.media.metadata.proxy"/>
+            <argument type="service" id="miky.media.thumbnail.format"/>
+            <argument type="service" id="miky.media.buzz.browser"/>
+            <argument type="service" id="miky.media.metadata.proxy"/>
             <call method="setTemplates">
                 <argument type="collection">
                     <argument key="helper_thumbnail">MikyMediaBundle:Provider:thumbnail.html.twig</argument>
@@ -105,9 +105,9 @@
                 </argument>
             </call>
         </service>
-        <service id="adevis.media.buzz.connector.file_get_contents" class="Buzz\Client\FileGetContents"/>
-        <service id="adevis.media.buzz.connector.curl" class="Buzz\Client\Curl"/>
-        <service id="adevis.media.buzz.browser" class="Buzz\Browser">
+        <service id="miky.media.buzz.connector.file_get_contents" class="Buzz\Client\FileGetContents"/>
+        <service id="miky.media.buzz.connector.curl" class="Buzz\Client\Curl"/>
+        <service id="miky.media.buzz.browser" class="Buzz\Browser">
             <argument/>
         </service>
     </services>

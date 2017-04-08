@@ -4,7 +4,7 @@
 
 namespace Miky\Bundle\MediaBundle\Entity;
 
-use Miky\Bundle\MediaBundle\Model\GalleryInterface;
+use Miky\Component\Media\Model\GalleryInterface;
 use Miky\Bundle\MediaBundle\Model\GalleryManagerInterface;
 use Sonata\CoreBundle\Model\BaseEntityManager;
 use Sonata\DatagridBundle\Pager\Doctrine\Pager;

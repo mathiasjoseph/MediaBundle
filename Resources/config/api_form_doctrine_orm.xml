@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="adevis.media.api.form.type.doctrine.media" class="Miky\Bundle\MediaBundle\Form\Type\ApiDoctrineMediaType">
-            <tag name="form.type" alias="adevis_media_api_form_doctrine_media"/>
+        <service id="miky.media.api.form.type.doctrine.media" class="Miky\Bundle\MediaBundle\Form\Type\ApiDoctrineMediaType">
+            <tag name="form.type" alias="miky_media_api_form_doctrine_media"/>
             <argument type="service" id="jms_serializer.metadata_factory"/>
             <argument type="service" id="doctrine"/>
-            <argument>adevis_media_api_form_doctrine_media</argument>
-            <argument>%adevis.media.admin.media.entity%</argument>
+            <argument>miky_media_api_form_doctrine_media</argument>
+            <argument>%miky.media.admin.media.entity%</argument>
             <argument>sonata_api_write</argument>
         </service>
-        <service id="adevis.media.api.form.type.media" class="Miky\Bundle\MediaBundle\Form\Type\ApiMediaType">
-            <tag name="form.type" alias="adevis_media_api_form_media"/>
-            <argument type="service" id="adevis.media.pool"/>
-            <argument>%adevis.media.admin.media.entity%</argument>
+        <service id="miky.media.api.form.type.media" class="Miky\Bundle\MediaBundle\Form\Type\ApiMediaType">
+            <tag name="form.type" alias="miky_media_api_form_media"/>
+            <argument type="service" id="miky.media.pool"/>
+            <argument>%miky.media.admin.media.entity%</argument>
         </service>
-        <service id="adevis.media.api.form.type.gallery" class="Miky\Bundle\MediaBundle\Form\Type\ApiGalleryType">
-            <tag name="form.type" alias="adevis_media_api_form_gallery"/>
+        <service id="miky.media.api.form.type.gallery" class="Miky\Bundle\MediaBundle\Form\Type\ApiGalleryType">
+            <tag name="form.type" alias="miky_media_api_form_gallery"/>
             <argument type="service" id="jms_serializer.metadata_factory"/>
             <argument type="service" id="doctrine"/>
-            <argument>adevis_media_api_form_gallery</argument>
-            <argument>%adevis.media.admin.gallery.entity%</argument>
+            <argument>miky_media_api_form_gallery</argument>
+            <argument>%miky.media.admin.gallery.entity%</argument>
             <argument>sonata_api_write</argument>
         </service>
-        <service id="adevis.media.api.form.type.gallery_has_media" class="Miky\Bundle\MediaBundle\Form\Type\ApiGalleryHasMediaType">
-            <tag name="form.type" alias="adevis_media_api_form_gallery_has_media"/>
+        <service id="miky.media.api.form.type.gallery_has_media" class="Miky\Bundle\MediaBundle\Form\Type\ApiGalleryHasMediaType">
+            <tag name="form.type" alias="miky_media_api_form_gallery_has_media"/>
             <argument type="service" id="jms_serializer.metadata_factory"/>
             <argument type="service" id="doctrine"/>
-            <argument>adevis_media_api_form_gallery_has_media</argument>
-            <argument>%adevis.media.admin.gallery_has_media.entity%</argument>
+            <argument>miky_media_api_form_gallery_has_media</argument>
+            <argument>%miky.media.admin.gallery_has_media.entity%</argument>
             <argument>sonata_api_write</argument>
         </service>
     </services>

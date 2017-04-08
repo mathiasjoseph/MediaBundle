@@ -4,7 +4,7 @@
 
 namespace Miky\Bundle\MediaBundle\Document;
 
-use Miky\Bundle\MediaBundle\Model\GalleryInterface;
+use Miky\Component\Media\Model\GalleryInterface;
 use Miky\Bundle\MediaBundle\Model\GalleryManagerInterface;
 use Sonata\CoreBundle\Model\BaseDocumentManager;
 

@@ -21,7 +21,7 @@ class MediaController extends Controller
      */
     public function getProvider(MediaInterface $media)
     {
-        return $this->get('adevis.media.pool')->getProvider($media->getProviderName());
+        return $this->get('miky.media.pool')->getProvider($media->getProviderName());
     }
 
     /**
@@ -31,7 +31,7 @@ class MediaController extends Controller
      */
     public function getMedia($id)
     {
-        return $this->get('adevis.media.manager.media')->find($id);
+        return $this->get('miky.media.manager.media')->find($id);
     }
 
     /**
@@ -50,11 +50,11 @@ class MediaController extends Controller
             throw new NotFoundHttpException(sprintf('unable to find the media with the id : %s', $id));
         }
 
-        if (!$this->get('adevis.media.pool')->getDownloadSecurity($media)->isGranted($media, $this->getRequest())) {
+        if (!$this->get('miky.media.pool')->getDownloadSecurity($media)->isGranted($media, $this->getRequest())) {
             throw new AccessDeniedException();
         }
 
-        $response = $this->getProvider($media)->getDownloadResponse($media, $format, $this->get('adevis.media.pool')->getDownloadMode($media));
+        $response = $this->getProvider($media)->getDownloadResponse($media, $format, $this->get('miky.media.pool')->getDownloadMode($media));
 
         if ($response instanceof BinaryFileResponse) {
             $response->prepare($this->get('request'));
@@ -79,13 +79,13 @@ class MediaController extends Controller
             throw new NotFoundHttpException(sprintf('unable to find the media with the id : %s', $id));
         }
 
-        if (!$this->get('adevis.media.pool')->getDownloadSecurity($media)->isGranted($media, $this->getRequest())) {
+        if (!$this->get('miky.media.pool')->getDownloadSecurity($media)->isGranted($media, $this->getRequest())) {
             throw new AccessDeniedException();
         }
 
         return $this->render('MikyMediaBundle:Media:view.html.twig', array(
                 'media' => $media,
-                'formats' => $this->get('adevis.media.pool')->getFormatNamesByContext($media->getContext()),
+                'formats' => $this->get('miky.media.pool')->getFormatNamesByContext($media->getContext()),
                 'format' => $format,
             ));
     }
@@ -122,7 +122,7 @@ class MediaController extends Controller
         $file = $provider->getReferenceFile($media);
 
         // load the file content from the abstracted file system
-        $tmpFile = sprintf('%s.%s', tempnam(sys_get_temp_dir(), 'adevis_media_liip_imagine'), $media->getExtension());
+        $tmpFile = sprintf('%s.%s', tempnam(sys_get_temp_dir(), 'miky_media_liip_imagine'), $media->getExtension());
         file_put_contents($tmpFile, $file->getContent());
 
         $image = $this->get('liip_imagine')->open($tmpFile);

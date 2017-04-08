@@ -21,7 +21,7 @@ class GalleryAdminController extends Controller
      */
     public function render($view, array $parameters = array(), Response $response = null, Request $request = null)
     {
-        $parameters['media_pool'] = $this->container->get('adevis.media.pool');
+        $parameters['media_pool'] = $this->container->get('miky.media.pool');
         $parameters['persistent_parameters'] = $this->admin->getPersistentParameters();
 
         return parent::render($view, $parameters, $response, $request);

@@ -14,8 +14,8 @@
                 <source>gallery</source>
                 <target>Галереи</target>
             </trans-unit>
-            <trans-unit id="adevis_media">
-                <source>adevis_media</source>
+            <trans-unit id="miky_media">
+                <source>miky_media</source>
                 <target>Медиа библиотека</target>
             </trans-unit>
             <trans-unit id="no_provider_available">
@@ -339,24 +339,24 @@
                 <source>sidemenu.link_media_view</source>
                 <target>Просмотр</target>
             </trans-unit>
-            <trans-unit id="adevis.media.provider.dailymotion">
-                <source>adevis.media.provider.dailymotion</source>
+            <trans-unit id="miky.media.provider.dailymotion">
+                <source>miky.media.provider.dailymotion</source>
                 <target>DailyMotion</target>
             </trans-unit>
-            <trans-unit id="adevis.media.provider.youtube">
-                <source>adevis.media.provider.youtube</source>
+            <trans-unit id="miky.media.provider.youtube">
+                <source>miky.media.provider.youtube</source>
                 <target>YouTube</target>
             </trans-unit>
-            <trans-unit id="adevis.media.provider.vimeo">
-                <source>adevis.media.provider.vimeo</source>
+            <trans-unit id="miky.media.provider.vimeo">
+                <source>miky.media.provider.vimeo</source>
                 <target>Vimeo</target>
             </trans-unit>
-            <trans-unit id="adevis.media.provider.image">
-                <source>adevis.media.provider.image</source>
+            <trans-unit id="miky.media.provider.image">
+                <source>miky.media.provider.image</source>
                 <target>Изображение</target>
             </trans-unit>
-            <trans-unit id="adevis.media.provider.file">
-                <source>adevis.media.provider.file</source>
+            <trans-unit id="miky.media.provider.file">
+                <source>miky.media.provider.file</source>
                 <target>Файл</target>
             </trans-unit>
             <trans-unit id="title.media_preview">
@@ -403,8 +403,8 @@
                 <source>widget_label_binary_content</source>
                 <target>widget_label_binary_content</target>
             </trans-unit>
-            <trans-unit id="adevis_media_gallery_index">
-                <source>adevis_media_gallery_index</source>
+            <trans-unit id="miky_media_gallery_index">
+                <source>miky_media_gallery_index</source>
                 <target>Галерея</target>
             </trans-unit>
             <trans-unit id="sonata_template_box_media_gallery_block">
@@ -419,17 +419,17 @@
                 <source>list.label_size</source>
                 <target>Размер</target>
             </trans-unit>
-            <trans-unit id="adevis.media.block.media">
-                <source>adevis.media.block.media</source>
-                <target>adevis.media.block.media</target>
+            <trans-unit id="miky.media.block.media">
+                <source>miky.media.block.media</source>
+                <target>miky.media.block.media</target>
             </trans-unit>
-            <trans-unit id="adevis.media.block.feature_media">
-                <source>adevis.media.block.feature_media</source>
-                <target>adevis.media.block.feature_media</target>
+            <trans-unit id="miky.media.block.feature_media">
+                <source>miky.media.block.feature_media</source>
+                <target>miky.media.block.feature_media</target>
             </trans-unit>
-            <trans-unit id="adevis.media.block.gallery">
-                <source>adevis.media.block.gallery</source>
-                <target>adevis.media.block.gallery</target>
+            <trans-unit id="miky.media.block.gallery">
+                <source>miky.media.block.gallery</source>
+                <target>miky.media.block.gallery</target>
             </trans-unit>
             <trans-unit id="form.label_title">
                 <source>form.label_title</source>
@@ -471,9 +471,9 @@
                 <source>form.label_orientation_right</source>
                 <target>form.label_orientation_right</target>
             </trans-unit>
-            <trans-unit id="adevis.media.block.gallery_list">
-                <source>adevis.media.block.gallery_list</source>
-                <target>adevis.media.block.gallery_list</target>
+            <trans-unit id="miky.media.block.gallery_list">
+                <source>miky.media.block.gallery_list</source>
+                <target>miky.media.block.gallery_list</target>
             </trans-unit>
             <trans-unit id="label_gallery_enabled">
                 <source>label_gallery_enabled</source>

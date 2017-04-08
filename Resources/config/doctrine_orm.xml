@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="adevis.media.manager.media.class">Miky\Bundle\MediaBundle\Entity\MediaManager</parameter>
-        <parameter key="adevis.media.manager.gallery.class">Miky\Bundle\MediaBundle\Entity\GalleryManager</parameter>
+        <parameter key="miky.media.manager.media.class">Miky\Bundle\MediaBundle\Entity\MediaManager</parameter>
+        <parameter key="miky.media.manager.gallery.class">Miky\Bundle\MediaBundle\Entity\GalleryManager</parameter>
     </parameters>
     <services>
-        <service id="adevis.media.manager.media" class="%adevis.media.manager.media.class%">
-            <argument>%adevis.media.media.class%</argument>
+        <service id="miky.media.manager.media" class="%miky.media.manager.media.class%">
+            <argument>%miky.media.media.class%</argument>
             <argument type="service" id="doctrine"/>
         </service>
-        <service id="adevis.media.manager.gallery" class="%adevis.media.manager.gallery.class%">
-            <argument>%adevis.media.gallery.class%</argument>
+        <service id="miky.media.manager.gallery" class="%miky.media.manager.gallery.class%">
+            <argument>%miky.media.gallery.class%</argument>
             <argument type="service" id="doctrine"/>
         </service>
         <!-- Path generator servive -->
-        <service id="adevis.media.generator.default" class="Miky\Bundle\MediaBundle\Generator\DefaultGenerator">
+        <service id="miky.media.generator.default" class="Miky\Bundle\MediaBundle\Generator\DefaultGenerator">
 
         </service>
-        <service id="adevis.media.doctrine.event_subscriber" class="Miky\Bundle\MediaBundle\Listener\ORM\MediaEventSubscriber">
+        <service id="miky.media.doctrine.event_subscriber" class="Miky\Bundle\MediaBundle\Listener\ORM\MediaEventSubscriber">
             <tag name="doctrine.event_subscriber"/>
             <argument type="service" id="service_container"/>
         </service>

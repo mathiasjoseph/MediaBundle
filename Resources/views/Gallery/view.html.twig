@@ -19,10 +19,10 @@ file that was distributed with this source code.
 
 <h1>{{ gallery.name }}</h1>
 
-<div class="adevis.media-gallery-media-list">
+<div class="miky.media-gallery-media-list">
     {% for galleryHasMedia in gallery.GalleryHasMedias %}
-        <div class="media adevis.media-gallery-media-item">
-            <a class="pull-left adevis.media-gallery-media-item-link" href="{{ url('adevis_media_view', {'id': galleryHasMedia.media|sonata_urlsafeid }) }}">
+        <div class="media miky.media-gallery-media-item">
+            <a class="pull-left miky.media-gallery-media-item-link" href="{{ url('miky_media_view', {'id': galleryHasMedia.media|sonata_urlsafeid }) }}">
                 {% thumbnail galleryHasMedia.media, gallery.defaultFormat with {'class': 'media-object'} %}
             </a>
             <div class="media-body">

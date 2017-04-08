@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="adevis.media.notification.create_thumbnail" class="Miky\Bundle\MediaBundle\Consumer\CreateThumbnailConsumer">
-            <tag name="sonata.notification.consumer" type="adevis.media.create_thumbnail"/>
-            <argument type="service" id="adevis.media.manager.media"/>
-            <argument type="service" id="adevis.media.pool"/>
+        <service id="miky.media.notification.create_thumbnail" class="Miky\Bundle\MediaBundle\Consumer\CreateThumbnailConsumer">
+            <tag name="sonata.notification.consumer" type="miky.media.create_thumbnail"/>
+            <argument type="service" id="miky.media.manager.media"/>
+            <argument type="service" id="miky.media.pool"/>
             <argument type="service" id="service_container"/>
         </service>
-        <service id="adevis.media.thumbnail.consumer.format" class="Miky\Bundle\MediaBundle\Thumbnail\ConsumerThumbnail">
-            <argument>adevis.media.thumbnail.format</argument>
-            <argument type="service" id="adevis.media.thumbnail.format"/>
+        <service id="miky.media.thumbnail.consumer.format" class="Miky\Bundle\MediaBundle\Thumbnail\ConsumerThumbnail">
+            <argument>miky.media.thumbnail.format</argument>
+            <argument type="service" id="miky.media.thumbnail.format"/>
             <argument type="service" id="sonata.notification.backend"/>
             <argument type="service" id="event_dispatcher"/>
         </service>

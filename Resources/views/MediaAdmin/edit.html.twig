@@ -24,14 +24,14 @@ file that was distributed with this source code.
     <div class="row">
         {% if object.id %}
             <div class="col-md-6">
-                {% block adevis_media_show_reference %}
+                {% block miky_media_show_reference %}
                     <div class="box box-primary">
                         <div class="box-header">
                             <h3 class="box-title">{{ 'title.media_preview'|trans({}, 'MikyMediaBundle') }}</h3>
-                            {% if adevis_media.pixlr and adevis_media.pixlr.isEditable(object) %}
+                            {% if miky_media.pixlr and miky_media.pixlr.isEditable(object) %}
                                 <div class="box-tools pull-right">
                                     <button class="btn btn-sm btn-default pixlr-link"
-                                            data-href="{{ path('adevis_media_pixlr_open_editor', { 'id': object|sonata_urlsafeid }) }}"
+                                            data-href="{{ path('miky_media_pixlr_open_editor', { 'id': object|sonata_urlsafeid }) }}"
                                             data-toggle="modal"
                                             data-target="#pixlr-modal"
                                             >
@@ -69,10 +69,10 @@ file that was distributed with this source code.
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th><a href="{{ path('adevis_media_download', {'id': object|sonata_urlsafeid }) }}">{{ 'label.protected_download_url'|trans({}, 'MikyMediaBundle') }}</a></th>
+                                    <th><a href="{{ path('miky_media_download', {'id': object|sonata_urlsafeid }) }}">{{ 'label.protected_download_url'|trans({}, 'MikyMediaBundle') }}</a></th>
                                     <td>
-                                        <input type="text" class="form-control" onClick="this.select();" readonly="readonly" value="{{ path('adevis_media_download', {'id': object|sonata_urlsafeid }) }}" />
-                                        <span class="label label-warning">{{ 'label.protected_download_url_notice'|trans({}, 'MikyMediaBundle') }}</span> {{ adevis_media.pool.downloadStrategy(object).description|raw }}
+                                        <input type="text" class="form-control" onClick="this.select();" readonly="readonly" value="{{ path('miky_media_download', {'id': object|sonata_urlsafeid }) }}" />
+                                        <span class="label label-warning">{{ 'label.protected_download_url_notice'|trans({}, 'MikyMediaBundle') }}</span> {{ miky_media.pool.downloadStrategy(object).description|raw }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -84,7 +84,7 @@ file that was distributed with this source code.
                                     </td>
                                 </tr>
 
-                                {% for name, format in adevis_media.pool.formatNamesByContext(object.context) %}
+                                {% for name, format in miky_media.pool.formatNamesByContext(object.context) %}
                                     <tr>
                                         <th>
                                             <a href="{% path object, name %}" target="_blank">{{ name }}</a>
@@ -98,7 +98,7 @@ file that was distributed with this source code.
                         </div>
 
                     </div>
-                {% endblock adevis_media_show_reference %}
+                {% endblock miky_media_show_reference %}
             </div>
         {% endif %}
 
@@ -108,7 +108,7 @@ file that was distributed with this source code.
         </div>
     </div>
 
-    {% if adevis_media.pixlr and adevis_media.pixlr.isEditable(object) %}
+    {% if miky_media.pixlr and miky_media.pixlr.isEditable(object) %}
         <div class="modal fade" id="pixlr-modal" tabindex="-1" role="dialog" aria-labelledby="{{ "label.edit_with_pixlr"|trans({}, "MikyMediaBundle")}}" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">

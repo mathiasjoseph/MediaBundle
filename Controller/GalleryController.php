@@ -15,7 +15,7 @@ class GalleryController extends Controller
      */
     public function indexAction()
     {
-        $galleries = $this->get('adevis.media.manager.gallery')->findBy(array(
+        $galleries = $this->get('miky.media.manager.gallery')->findBy(array(
             'enabled' => true,
         ));
 
@@ -33,7 +33,7 @@ class GalleryController extends Controller
      */
     public function viewAction($id)
     {
-        $gallery = $this->get('adevis.media.manager.gallery')->findOneBy(array(
+        $gallery = $this->get('miky.media.manager.gallery')->findOneBy(array(
             'id' => $id,
             'enabled' => true,
         ));

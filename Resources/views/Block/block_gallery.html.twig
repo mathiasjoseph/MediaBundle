@@ -13,12 +13,12 @@ file that was distributed with this source code.
 {% block block %}
     {% if settings.format %}
         {% if settings.title %}
-            <h3 class="adevis.media-block-media-title">{{ settings.title }}</h3>
+            <h3 class="miky.media-block-media-title">{{ settings.title }}</h3>
         {% endif %}
 
         {% sonata_template_box 'sonata_template_box_media_gallery_block' 'MikyMediaBundle' %}
 
-        <div id="carousel-{{ block.id }}" class="carousel slide adevis.media-block-gallery-container"
+        <div id="carousel-{{ block.id }}" class="carousel slide miky.media-block-gallery-container"
              data-interval="{{ settings.pauseTime }}"
              {% if settings.startPaused != 1 %}data-ride="carousel"{% endif %}
                 >

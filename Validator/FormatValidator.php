@@ -3,7 +3,7 @@
 
 namespace Miky\Bundle\MediaBundle\Validator;
 
-use Miky\Bundle\MediaBundle\Model\GalleryInterface;
+use Miky\Component\Media\Model\GalleryInterface;
 use Miky\Bundle\MediaBundle\Provider\Pool;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;

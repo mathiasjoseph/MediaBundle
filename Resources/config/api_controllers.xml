@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="adevis.media.controller.api.gallery" class="Miky\Bundle\MediaBundle\Controller\Api\GalleryController">
-            <argument type="service" id="adevis.media.manager.gallery"/>
-            <argument type="service" id="adevis.media.manager.media"/>
+        <service id="miky.media.controller.api.gallery" class="Miky\Bundle\MediaBundle\Controller\Api\GalleryController">
+            <argument type="service" id="miky.media.manager.gallery"/>
+            <argument type="service" id="miky.media.manager.media"/>
             <argument type="service" id="form.factory"/>
-            <argument>%adevis.media.admin.gallery_has_media.entity%</argument>
+            <argument>%miky.media.admin.gallery_has_media.entity%</argument>
         </service>
-        <service id="adevis.media.controller.api.media" class="Miky\Bundle\MediaBundle\Controller\Api\MediaController">
-            <argument type="service" id="adevis.media.manager.media"/>
-            <argument type="service" id="adevis.media.pool"/>
+        <service id="miky.media.controller.api.media" class="Miky\Bundle\MediaBundle\Controller\Api\MediaController">
+            <argument type="service" id="miky.media.manager.media"/>
+            <argument type="service" id="miky.media.pool"/>
             <argument type="service" id="form.factory"/>
         </service>
     </services>

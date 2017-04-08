@@ -4,7 +4,7 @@
 
 namespace Miky\Bundle\MediaBundle\Block;
 
-use Miky\Bundle\MediaBundle\Model\GalleryInterface;
+use Miky\Component\Media\Model\GalleryInterface;
 use Miky\Bundle\MediaBundle\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Provider\Pool;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
@@ -56,7 +56,7 @@ class GalleryBlockService extends BaseBlockService
      */
     public function getMediaPool()
     {
-        return $this->container->get('adevis.media.pool');
+        return $this->container->get('miky.media.pool');
     }
 
     /**
@@ -65,7 +65,7 @@ class GalleryBlockService extends BaseBlockService
     public function getGalleryAdmin()
     {
         if (!$this->galleryAdmin) {
-            $this->galleryAdmin = $this->container->get('adevis.media.admin.gallery');
+            $this->galleryAdmin = $this->container->get('miky.media.admin.gallery');
         }
 
         return $this->galleryAdmin;

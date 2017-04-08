@@ -12,9 +12,9 @@ file that was distributed with this source code.
 
 {% block block %}
 
-    <div class="adevis.media-block-feature-media-container">
+    <div class="miky.media-block-feature-media-container">
 
-        <div class="adevis.media-block-feature-media-container-{{ settings.orientation }}">
+        <div class="miky.media-block-feature-media-container-{{ settings.orientation }}">
             {% if media and settings.format%}
                 {% media media, settings.format %}
             {% else %}
@@ -23,10 +23,10 @@ file that was distributed with this source code.
         </div>
 
         {% if settings.title %}
-            <h3 class="adevis.media-block-feature-media-title">{{ settings.title }}</h3>
+            <h3 class="miky.media-block-feature-media-title">{{ settings.title }}</h3>
         {% endif %}
 
-        <div class="adevis.media-block-feature-media-content">
+        <div class="miky.media-block-feature-media-content">
             {{ settings.content }}
         </div>
 

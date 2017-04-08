@@ -12,10 +12,10 @@ file that was distributed with this source code.
 
 {% block block %}
     {% if settings.title %}
-        <h3 class="adevis.media-block-media-title">{{ settings.title }}</h3>
+        <h3 class="miky.media-block-media-title">{{ settings.title }}</h3>
     {% endif %}
 
-    <div class="adevis.media-block-media-container">
+    <div class="miky.media-block-media-container">
         {% if media and settings.format%}
             {% media media, settings.format %}
         {% else %}

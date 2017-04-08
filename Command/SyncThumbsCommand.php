@@ -33,7 +33,7 @@ class SyncThumbsCommand extends BaseCommand
      */
     public function configure()
     {
-        $this->setName('adevis.media:sync-thumbnails')
+        $this->setName('miky.media:sync-thumbnails')
             ->setDescription('Sync uploaded image thumbs with new media formats')
             ->setDefinition(array(
                 new InputArgument('providerName', InputArgument::OPTIONAL, 'The provider'),

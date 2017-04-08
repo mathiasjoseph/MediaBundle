@@ -68,7 +68,7 @@ class ApiMediaType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'provider_name' => 'adevis.media.provider.image',
+            'provider_name' => 'miky.media.provider.image',
             'context' => 'api',
         ));
     }
@@ -82,7 +82,7 @@ class ApiMediaType extends AbstractType
         // (when requirement of Symfony is >= 2.8)
         return method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
             ? 'Miky\Bundle\MediaBundle\Form\Type\ApiDoctrineMediaType'
-            : 'adevis_media_api_form_doctrine_media';
+            : 'miky_media_api_form_doctrine_media';
     }
 
     /**
@@ -90,7 +90,7 @@ class ApiMediaType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'adevis_media_api_form_media';
+        return 'miky_media_api_form_media';
     }
 
     /**

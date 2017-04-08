@@ -16,6 +16,6 @@ class GallerySerializerHandler extends BaseSerializerHandler
      */
     public static function getType()
     {
-        return 'adevis_media_gallery_id';
+        return 'miky_media_gallery_id';
     }
 }

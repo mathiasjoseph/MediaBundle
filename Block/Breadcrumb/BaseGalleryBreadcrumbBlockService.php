@@ -21,8 +21,8 @@ abstract class BaseGalleryBreadcrumbBlockService extends BaseBreadcrumbMenuBlock
     {
         $menu = parent::getRootMenu($blockContext);
 
-        $menu->addChild('adevis_media_gallery_index', array(
-            'route' => 'adevis_media_gallery_index',
+        $menu->addChild('miky_media_gallery_index', array(
+            'route' => 'miky_media_gallery_index',
             'extras' => array('translation_domain' => 'MikyMediaBundle'),
         ));
 
