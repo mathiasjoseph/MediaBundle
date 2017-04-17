@@ -4,9 +4,8 @@
 
 namespace Miky\Bundle\MediaBundle\Entity;
 
-use Miky\Bundle\MediaBundle\Model\GalleryHasMedia;
 
-abstract class BaseGalleryHasMedia extends GalleryHasMedia
+abstract class BaseGalleryHasMedia extends \Miky\Component\Media\Model\GalleryHasMedia
 {
     public function prePersist()
     {

@@ -4,6 +4,7 @@ namespace Miky\Bundle\MediaBundle\Entity;
 use Miky\Component\Core\Model\CommonModelInterface;
 use Miky\Component\Core\Model\CommonModelTrait;
 
+use Miky\Component\Media\Model\Media as BaseMedia;
 
 /**
  * Media

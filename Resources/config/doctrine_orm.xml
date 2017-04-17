@@ -17,7 +17,7 @@
         <service id="miky.media.generator.default" class="Miky\Bundle\MediaBundle\Generator\DefaultGenerator">
 
         </service>
-        <service id="miky.media.doctrine.event_subscriber" class="Miky\Bundle\MediaBundle\Listener\ORM\MediaEventSubscriber">
+        <service id="miky.media.doctrine.event_subscriber" class="Miky\Bundle\MediaBundle\Doctrine\EventListener\MediaEventSubscriber">
             <tag name="doctrine.event_subscriber"/>
             <argument type="service" id="service_container"/>
         </service>

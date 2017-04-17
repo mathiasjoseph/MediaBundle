@@ -4,9 +4,8 @@
 
 namespace Miky\Bundle\MediaBundle\Entity;
 
-use Miky\Bundle\MediaBundle\Model\Media;
 
-abstract class BaseMedia extends Media
+abstract class BaseMedia extends \Miky\Component\Media\Model\Media
 {
     /**
      * {@inheritdoc}

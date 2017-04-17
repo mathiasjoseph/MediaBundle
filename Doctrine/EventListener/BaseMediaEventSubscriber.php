@@ -2,12 +2,16 @@
 
 
 
-namespace Miky\Bundle\MediaBundle\Listener;
+namespace Miky\Bundle\MediaBundle\Doctrine\EventListener;
 
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use Miky\Bundle\MediaBundle\Provider\MediaProviderInterface;
 use Miky\Bundle\MediaBundle\Provider\Pool;
 use Doctrine\Common\EventArgs;
 use Doctrine\Common\EventSubscriber;
+use Miky\Component\Media\Model\ContainsMediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 abstract class BaseMediaEventSubscriber implements EventSubscriber
@@ -31,6 +35,10 @@ abstract class BaseMediaEventSubscriber implements EventSubscriber
     public function getPool()
     {
         return $this->container->get('miky.media.pool');
+    }
+
+    public function getMediaClass(){
+        return $this->container->getParameter('miky.media.media.class');
     }
 
     /**
@@ -117,7 +125,7 @@ abstract class BaseMediaEventSubscriber implements EventSubscriber
     /**
      * @param EventArgs $args
      *
-     * @return \Miky\Bundle\MediaBundle\Model\MediaInterface
+     * @return MediaInterface
      */
     abstract protected function getMedia(EventArgs $args);
 
@@ -136,4 +144,17 @@ abstract class BaseMediaEventSubscriber implements EventSubscriber
 
         return $this->getPool()->getProvider($media->getProviderName());
     }
+
+    /**
+     * @param LifecycleEventArgs $args
+     *
+     * @return boolean
+     */
+    protected function isContainsMedia(LifecycleEventArgs $args){
+        if (!in_array(ContainsMediaInterface::class, class_implements(get_class($args->getEntity())))) {
+            return false;
+        }
+        return true;
+    }
+
 }
