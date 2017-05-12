@@ -4,6 +4,7 @@
 
 namespace Miky\Bundle\MediaBundle;
 
+use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
 use Miky\Bundle\MediaBundle\DependencyInjection\Compiler\AddProviderCompilerPass;
 use Miky\Bundle\MediaBundle\DependencyInjection\Compiler\GlobalVariablesCompilerPass;
 use Miky\Bundle\MediaBundle\DependencyInjection\Compiler\SecurityContextCompilerPass;
@@ -18,6 +19,8 @@ class MikyMediaBundle extends Bundle
      */
     public function build(ContainerBuilder $container)
     {
+        parent::build($container);
+        $this->addRegisterMappingsPass($container);
         $container->addCompilerPass(new AddProviderCompilerPass());
         $container->addCompilerPass(new GlobalVariablesCompilerPass());
         $container->addCompilerPass(new SecurityContextCompilerPass());
@@ -50,5 +53,19 @@ class MikyMediaBundle extends Bundle
             'miky_media_api_form_gallery' => 'Miky\Bundle\MediaBundle\Form\Type\ApiGalleryType',
             'miky_media_api_form_gallery_has_media' => 'Miky\Bundle\MediaBundle\Form\Type\ApiGalleryHasMediaType',
         ));
+    }
+
+
+    /**
+     * @param ContainerBuilder $container
+     */
+    private function addRegisterMappingsPass(ContainerBuilder $container)
+    {
+        $mappings = array(
+            realpath(__DIR__.'/Resources/config/doctrine-mapping') => 'Miky\Bundle\MediaBundle\Model',
+        );
+        if (class_exists('Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass')) {
+            $container->addCompilerPass(DoctrineOrmMappingsPass::createXmlMappingDriver($mappings, array('miky_media.model_manager_name')));
+        }
     }
 }

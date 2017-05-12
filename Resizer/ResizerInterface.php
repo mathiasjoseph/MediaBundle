@@ -4,7 +4,7 @@
 
 namespace Miky\Bundle\MediaBundle\Resizer;
 
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Gaufrette\File;
 use Imagine\Image\Box;
 

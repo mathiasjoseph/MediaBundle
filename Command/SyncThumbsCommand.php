@@ -4,7 +4,7 @@
 
 namespace Miky\Bundle\MediaBundle\Command;
 
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Provider\MediaProviderInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

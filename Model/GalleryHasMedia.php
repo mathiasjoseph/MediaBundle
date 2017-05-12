@@ -1,24 +1,19 @@
 <?php
 
+namespace Miky\Bundle\MediaBundle\Model;
 
-
-namespace Miky\Bundle\MediaBundle\Entity;
-
-
-abstract class BaseMedia extends \Miky\Component\Media\Model\Media
+/**
+ * GalleryHasMedia
+ */
+class GalleryHasMedia extends \Miky\Component\Media\Model\GalleryHasMedia
 {
-    /**
-     * {@inheritdoc}
-     */
+
     public function prePersist()
     {
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function preUpdate()
     {
         $this->updatedAt = new \DateTime();

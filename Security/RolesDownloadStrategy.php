@@ -4,7 +4,7 @@
 
 namespace Miky\Bundle\MediaBundle\Security;
 
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationCredentialsNotFoundException;

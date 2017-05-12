@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="miky.media.manager.media.class">Miky\Bundle\MediaBundle\Entity\MediaManager</parameter>
-        <parameter key="miky.media.manager.gallery.class">Miky\Bundle\MediaBundle\Entity\GalleryManager</parameter>
+        <parameter key="miky.media.manager.media.class">Miky\Bundle\MediaBundle\Doctrine\MediaManager</parameter>
+        <parameter key="miky.media.manager.gallery.class">Miky\Bundle\MediaBundle\Doctrine\GalleryManager</parameter>
     </parameters>
     <services>
         <service id="miky.media.manager.media" class="%miky.media.manager.media.class%">

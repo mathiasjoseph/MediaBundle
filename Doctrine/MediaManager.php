@@ -2,14 +2,14 @@
 
 
 
-namespace Miky\Bundle\MediaBundle\Entity;
+namespace Miky\Bundle\MediaBundle\Doctrine;
 
-use Miky\Bundle\MediaBundle\Model\MediaManagerInterface;
 use Sonata\CoreBundle\Model\BaseEntityManager;
+use Sonata\CoreBundle\Model\ManagerInterface;
 use Sonata\DatagridBundle\Pager\Doctrine\Pager;
 use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
 
-class MediaManager extends BaseEntityManager implements MediaManagerInterface
+class MediaManager extends BaseEntityManager implements ManagerInterface
 {
     /**
      * {@inheritdoc}

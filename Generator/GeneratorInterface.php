@@ -4,7 +4,7 @@
 
 namespace Miky\Bundle\MediaBundle\Generator;
 
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 
 interface GeneratorInterface
 {

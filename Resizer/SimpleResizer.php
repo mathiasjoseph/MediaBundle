@@ -5,7 +5,7 @@
 namespace Miky\Bundle\MediaBundle\Resizer;
 
 use Miky\Bundle\MediaBundle\Metadata\MetadataBuilderInterface;
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Gaufrette\File;
 use Imagine\Exception\InvalidArgumentException;
 use Imagine\Image\Box;

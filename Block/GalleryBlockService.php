@@ -5,7 +5,7 @@
 namespace Miky\Bundle\MediaBundle\Block;
 
 use Miky\Component\Media\Model\GalleryInterface;
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Provider\Pool;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Sonata\AdminBundle\Admin\AdminInterface;

@@ -4,7 +4,7 @@
 
 namespace Miky\Bundle\MediaBundle\Provider;
 
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Resizer\ResizerInterface;
 use Gaufrette\Filesystem;
 use Sonata\AdminBundle\Form\FormMapper;

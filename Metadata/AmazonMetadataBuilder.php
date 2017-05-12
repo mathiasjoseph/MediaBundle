@@ -4,7 +4,7 @@
 
 namespace Miky\Bundle\MediaBundle\Metadata;
 
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Guzzle\Http\Mimetypes;
 
 class AmazonMetadataBuilder implements MetadataBuilderInterface

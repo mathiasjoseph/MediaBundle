@@ -2,10 +2,9 @@
 
 
 
-namespace Miky\Bundle\MediaBundle\Entity;
+namespace Miky\Bundle\MediaBundle\Doctrine;
 
 use Miky\Component\Media\Model\GalleryInterface;
-use Miky\Bundle\MediaBundle\Model\GalleryManagerInterface;
 use Sonata\CoreBundle\Model\BaseEntityManager;
 use Sonata\DatagridBundle\Pager\Doctrine\Pager;
 use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
@@ -22,6 +21,16 @@ class GalleryManager extends BaseEntityManager implements GalleryManagerInterfac
     public function update(GalleryInterface $gallery)
     {
         parent::save($gallery);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function create()
+    {
+        $class = $this->getClass();
+
+        return new $class();
     }
 
     /**

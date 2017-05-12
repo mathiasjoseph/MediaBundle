@@ -4,7 +4,7 @@
 
 namespace Miky\Bundle\MediaBundle\Extra;
 
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Model\MediaManagerInterface;
 use Miky\Bundle\MediaBundle\Provider\Pool;
 use Symfony\Component\DependencyInjection\ContainerInterface;

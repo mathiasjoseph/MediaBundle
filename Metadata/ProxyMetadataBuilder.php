@@ -5,7 +5,7 @@
 namespace Miky\Bundle\MediaBundle\Metadata;
 
 use Miky\Bundle\MediaBundle\Filesystem\Replicate;
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ProxyMetadataBuilder implements MetadataBuilderInterface

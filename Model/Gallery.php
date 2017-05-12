@@ -1,22 +1,22 @@
 <?php
 
+namespace Miky\Bundle\MediaBundle\Model;
 
-
-namespace Miky\Bundle\MediaBundle\Entity;
-
-use Miky\Component\Media\Model\Gallery;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Bundle\MediaBundle\Entity\BaseGallery.
+ * Gallery
  */
-abstract class BaseGallery extends Gallery
+class Gallery extends \Miky\Component\Media\Model\Gallery
 {
+
+
     /**
      * {@inheritdoc}
      */
     public function __construct()
     {
+
         $this->galleryHasMedias = new ArrayCollection();
     }
 

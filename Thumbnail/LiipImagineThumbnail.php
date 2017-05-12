@@ -4,7 +4,7 @@
 
 namespace Miky\Bundle\MediaBundle\Thumbnail;
 
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Provider\MediaProviderInterface;
 use Symfony\Component\Routing\RouterInterface;
 
