@@ -13,7 +13,7 @@ use Buzz\Browser;
 use Gaufrette\Filesystem;
 use Imagine\Image\Box;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\CoreBundle\Model\Metadata;
+use Miky\Bundle\CoreBundle\Model\Metadata;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;

@@ -5,7 +5,7 @@
 namespace Miky\Bundle\MediaBundle\Provider;
 
 use Miky\Component\Media\Model\MediaInterface;
-use Sonata\CoreBundle\Model\Metadata;
+use Miky\Bundle\CoreBundle\Model\Metadata;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class VimeoProvider extends BaseVideoProvider

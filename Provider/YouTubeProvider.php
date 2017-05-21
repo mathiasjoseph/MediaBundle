@@ -11,7 +11,7 @@ use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Thumbnail\ThumbnailInterface;
 use Buzz\Browser;
 use Gaufrette\Filesystem;
-use Sonata\CoreBundle\Model\Metadata;
+use Miky\Bundle\CoreBundle\Model\Metadata;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class YouTubeProvider extends BaseVideoProvider

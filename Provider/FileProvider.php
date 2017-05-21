@@ -12,7 +12,7 @@ use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Thumbnail\ThumbnailInterface;
 use Gaufrette\Filesystem;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\CoreBundle\Model\Metadata;
+use Miky\Bundle\CoreBundle\Model\Metadata;
 use Sonata\CoreBundle\Validator\ErrorElement;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;

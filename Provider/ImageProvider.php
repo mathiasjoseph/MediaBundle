@@ -11,7 +11,7 @@ use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Thumbnail\ThumbnailInterface;
 use Gaufrette\Filesystem;
 use Imagine\Image\ImagineInterface;
-use Sonata\CoreBundle\Model\Metadata;
+use Miky\Bundle\CoreBundle\Model\Metadata;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 

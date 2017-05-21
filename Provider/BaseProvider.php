@@ -10,7 +10,7 @@ use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Resizer\ResizerInterface;
 use Miky\Bundle\MediaBundle\Thumbnail\ThumbnailInterface;
 use Gaufrette\Filesystem;
-use Sonata\CoreBundle\Model\Metadata;
+use Miky\Bundle\CoreBundle\Model\Metadata;
 use Sonata\CoreBundle\Validator\ErrorElement;
 
 abstract class BaseProvider implements MediaProviderInterface

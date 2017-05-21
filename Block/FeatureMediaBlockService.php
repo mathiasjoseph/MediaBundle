@@ -6,7 +6,7 @@ namespace Miky\Bundle\MediaBundle\Block;
 
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\CoreBundle\Model\Metadata;
+use Miky\Bundle\CoreBundle\Model\Metadata;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
