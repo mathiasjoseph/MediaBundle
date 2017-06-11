@@ -4,9 +4,9 @@
 
 namespace Miky\Bundle\MediaBundle\Block;
 
+use Miky\Bundle\CoreBundle\Model\Metadata;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Miky\Bundle\CoreBundle\Model\Metadata;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**

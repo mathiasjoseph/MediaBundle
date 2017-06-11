@@ -4,13 +4,13 @@
 
 namespace Miky\Bundle\MediaBundle\Provider;
 
-use Miky\Bundle\MediaBundle\CDN\CDNInterface;
-use Miky\Bundle\MediaBundle\Generator\GeneratorInterface;
-use Miky\Component\Media\Model\MediaInterface;
-use Miky\Bundle\MediaBundle\Resizer\ResizerInterface;
-use Miky\Bundle\MediaBundle\Thumbnail\ThumbnailInterface;
 use Gaufrette\Filesystem;
 use Miky\Bundle\CoreBundle\Model\Metadata;
+use Miky\Bundle\MediaBundle\CDN\CDNInterface;
+use Miky\Bundle\MediaBundle\Generator\GeneratorInterface;
+use Miky\Bundle\MediaBundle\Resizer\ResizerInterface;
+use Miky\Bundle\MediaBundle\Thumbnail\ThumbnailInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Sonata\CoreBundle\Validator\ErrorElement;
 
 abstract class BaseProvider implements MediaProviderInterface

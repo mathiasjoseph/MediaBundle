@@ -4,8 +4,8 @@
 
 namespace Miky\Bundle\MediaBundle\Templating\Helper;
 
-use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Provider\Pool;
+use Miky\Component\Media\Model\MediaInterface;
 use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Templating\Helper\Helper;
 

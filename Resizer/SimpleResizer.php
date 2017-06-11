@@ -4,13 +4,13 @@
 
 namespace Miky\Bundle\MediaBundle\Resizer;
 
-use Miky\Bundle\MediaBundle\Metadata\MetadataBuilderInterface;
-use Miky\Component\Media\Model\MediaInterface;
 use Gaufrette\File;
 use Imagine\Exception\InvalidArgumentException;
 use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
 use Imagine\Image\ImagineInterface;
+use Miky\Bundle\MediaBundle\Metadata\MetadataBuilderInterface;
+use Miky\Component\Media\Model\MediaInterface;
 
 class SimpleResizer implements ResizerInterface
 {

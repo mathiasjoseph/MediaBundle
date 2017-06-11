@@ -4,9 +4,9 @@
 
 namespace Miky\Bundle\MediaBundle\Extra;
 
-use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Model\MediaManagerInterface;
 use Miky\Bundle\MediaBundle\Provider\Pool;
+use Miky\Component\Media\Model\MediaInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;

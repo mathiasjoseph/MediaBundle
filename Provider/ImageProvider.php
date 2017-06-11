@@ -4,14 +4,14 @@
 
 namespace Miky\Bundle\MediaBundle\Provider;
 
-use Miky\Bundle\MediaBundle\CDN\CDNInterface;
-use Miky\Bundle\MediaBundle\Generator\GeneratorInterface;
-use Miky\Bundle\MediaBundle\Metadata\MetadataBuilderInterface;
-use Miky\Component\Media\Model\MediaInterface;
-use Miky\Bundle\MediaBundle\Thumbnail\ThumbnailInterface;
 use Gaufrette\Filesystem;
 use Imagine\Image\ImagineInterface;
 use Miky\Bundle\CoreBundle\Model\Metadata;
+use Miky\Bundle\MediaBundle\CDN\CDNInterface;
+use Miky\Bundle\MediaBundle\Generator\GeneratorInterface;
+use Miky\Bundle\MediaBundle\Metadata\MetadataBuilderInterface;
+use Miky\Bundle\MediaBundle\Thumbnail\ThumbnailInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 

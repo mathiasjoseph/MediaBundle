@@ -4,8 +4,8 @@
 
 namespace Miky\Bundle\MediaBundle\Controller;
 
-use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Provider\MediaProviderInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;

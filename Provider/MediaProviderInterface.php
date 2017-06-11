@@ -4,9 +4,9 @@
 
 namespace Miky\Bundle\MediaBundle\Provider;
 
-use Miky\Component\Media\Model\MediaInterface;
-use Miky\Bundle\MediaBundle\Resizer\ResizerInterface;
 use Gaufrette\Filesystem;
+use Miky\Bundle\MediaBundle\Resizer\ResizerInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\CoreBundle\Model\MetadataInterface;
 use Sonata\CoreBundle\Validator\ErrorElement;

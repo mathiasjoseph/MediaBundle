@@ -4,8 +4,8 @@
 
 namespace Miky\Bundle\MediaBundle\Provider;
 
-use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Security\DownloadStrategyInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Sonata\CoreBundle\Validator\ErrorElement;
 
 class Pool

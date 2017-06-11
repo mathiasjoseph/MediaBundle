@@ -6,7 +6,6 @@ namespace Miky\Bundle\MediaBundle\Command;
 
 use Miky\Bundle\MediaBundle\Provider\FileProvider;
 use Miky\Bundle\MediaBundle\Provider\MediaProviderInterface;
-use Miky\Bundle\MediaBundle\Provider\Pool;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;

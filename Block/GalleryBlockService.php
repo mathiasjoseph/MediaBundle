@@ -4,17 +4,17 @@
 
 namespace Miky\Bundle\MediaBundle\Block;
 
+use Doctrine\ORM\Mapping\ClassMetadataInfo;
+use Miky\Bundle\CoreBundle\Model\Metadata;
+use Miky\Bundle\MediaBundle\Provider\Pool;
 use Miky\Component\Media\Model\GalleryInterface;
 use Miky\Component\Media\Model\MediaInterface;
-use Miky\Bundle\MediaBundle\Provider\Pool;
-use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BaseBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\CoreBundle\Model\ManagerInterface;
-use Miky\Bundle\CoreBundle\Model\Metadata;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;

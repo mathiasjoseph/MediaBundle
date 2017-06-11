@@ -4,12 +4,12 @@
 
 namespace Miky\Bundle\MediaBundle\Resizer;
 
-use Miky\Bundle\MediaBundle\Metadata\MetadataBuilderInterface;
-use Miky\Component\Media\Model\MediaInterface;
 use Gaufrette\File;
 use Imagine\Image\Box;
 use Imagine\Image\ImagineInterface;
 use Imagine\Image\Point;
+use Miky\Bundle\MediaBundle\Metadata\MetadataBuilderInterface;
+use Miky\Component\Media\Model\MediaInterface;
 
 /**
  * This reziser crop the image when the width and height are specified.

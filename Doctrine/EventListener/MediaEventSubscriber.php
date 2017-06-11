@@ -4,11 +4,11 @@
 namespace Miky\Bundle\MediaBundle\Doctrine\EventListener;
 
 use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\Common\EventArgs;
 use Doctrine\Common\Persistence\Event\LoadClassMetadataEventArgs;
+use Doctrine\ORM\Events;
 use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
 use Miky\Bundle\MediaBundle\Annotation\MediaProperty;
-use Doctrine\Common\EventArgs;
-use Doctrine\ORM\Events;
 use Miky\Component\Classification\Model\CategoryInterface;
 use Miky\Component\Media\Model\MediaInterface;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;

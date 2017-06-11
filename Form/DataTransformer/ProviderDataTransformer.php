@@ -4,8 +4,8 @@
 
 namespace Miky\Bundle\MediaBundle\Form\DataTransformer;
 
-use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Provider\Pool;
+use Miky\Component\Media\Model\MediaInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 
 class ProviderDataTransformer implements DataTransformerInterface

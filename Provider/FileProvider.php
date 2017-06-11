@@ -4,15 +4,15 @@
 
 namespace Miky\Bundle\MediaBundle\Provider;
 
+use Gaufrette\Filesystem;
+use Miky\Bundle\CoreBundle\Model\Metadata;
 use Miky\Bundle\MediaBundle\CDN\CDNInterface;
 use Miky\Bundle\MediaBundle\Extra\ApiMediaFile;
 use Miky\Bundle\MediaBundle\Generator\GeneratorInterface;
 use Miky\Bundle\MediaBundle\Metadata\MetadataBuilderInterface;
-use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Thumbnail\ThumbnailInterface;
-use Gaufrette\Filesystem;
+use Miky\Component\Media\Model\MediaInterface;
 use Sonata\AdminBundle\Form\FormMapper;
-use Miky\Bundle\CoreBundle\Model\Metadata;
 use Sonata\CoreBundle\Validator\ErrorElement;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;

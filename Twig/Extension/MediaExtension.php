@@ -4,11 +4,11 @@
 
 namespace Miky\Bundle\MediaBundle\Twig\Extension;
 
-use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\MediaBundle\Provider\Pool;
 use Miky\Bundle\MediaBundle\Twig\TokenParser\MediaTokenParser;
 use Miky\Bundle\MediaBundle\Twig\TokenParser\PathTokenParser;
 use Miky\Bundle\MediaBundle\Twig\TokenParser\ThumbnailTokenParser;
+use Miky\Component\Media\Model\MediaInterface;
 use Sonata\CoreBundle\Model\ManagerInterface;
 
 class MediaExtension extends \Twig_Extension implements \Twig_Extension_InitRuntimeInterface

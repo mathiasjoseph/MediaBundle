@@ -4,17 +4,17 @@
 
 namespace Miky\Bundle\MediaBundle\Controller\Api;
 
-use Miky\Component\Media\Model\GalleryHasMediaInterface;
-use Miky\Component\Media\Model\GalleryInterface;
-use Miky\Bundle\MediaBundle\Model\GalleryManagerInterface;
-use Miky\Component\Media\Model\MediaInterface;
-use Miky\Bundle\MediaBundle\Model\MediaManagerInterface;
 use FOS\RestBundle\Context\Context;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use FOS\RestBundle\View\View as FOSRestView;
 use JMS\Serializer\SerializationContext;
+use Miky\Bundle\MediaBundle\Model\GalleryManagerInterface;
+use Miky\Bundle\MediaBundle\Model\MediaManagerInterface;
+use Miky\Component\Media\Model\GalleryHasMediaInterface;
+use Miky\Component\Media\Model\GalleryInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Sonata\DatagridBundle\Pager\PagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;

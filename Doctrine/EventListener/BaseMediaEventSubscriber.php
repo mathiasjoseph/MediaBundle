@@ -5,11 +5,11 @@
 namespace Miky\Bundle\MediaBundle\Doctrine\EventListener;
 
 
+use Doctrine\Common\EventArgs;
+use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Miky\Bundle\MediaBundle\Provider\MediaProviderInterface;
 use Miky\Bundle\MediaBundle\Provider\Pool;
-use Doctrine\Common\EventArgs;
-use Doctrine\Common\EventSubscriber;
 use Miky\Component\Media\Model\ContainsMediaInterface;
 use Miky\Component\Media\Model\MediaInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;

@@ -3,8 +3,8 @@
 
 namespace Miky\Bundle\MediaBundle\Validator;
 
-use Miky\Component\Media\Model\GalleryInterface;
 use Miky\Bundle\MediaBundle\Provider\Pool;
+use Miky\Component\Media\Model\GalleryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\ExecutionContextInterface as LegacyExecutionContextInterface;
