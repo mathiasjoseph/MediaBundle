@@ -46,7 +46,7 @@ class MediaEventSubscriber extends BaseMediaEventSubscriber
         $nameConverter = new CamelCaseToSnakeCaseNameConverter();
         $metadata = $eventArgs->getClassMetadata();
         $builder = new ClassMetadataBuilder($metadata);
-        $reflectionClass = $metadata->getReflectionClass();
+        $reflectionClass = new \ReflectionClass($metadata->getName());
         $reflexionProperties = $reflectionClass->getProperties();
         $reader = new AnnotationReader();
 
