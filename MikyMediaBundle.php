@@ -14,6 +14,12 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class MikyMediaBundle extends Bundle
 {
+    private $useDefaultEntities;
+
+    public function __construct($useDefaultEntities = true) {
+        $this->useDefaultEntities = $useDefaultEntities;
+    }
+    
     /**
      * {@inheritdoc}
      */
@@ -26,6 +32,8 @@ class MikyMediaBundle extends Bundle
         $container->addCompilerPass(new SecurityContextCompilerPass());
 
         $this->registerFormMapping();
+        $container->setParameter("miky_media.use_default_entities", $this->useDefaultEntities);
+        $this->addRegisterMappingsPass($container);
     }
 
     /**
@@ -55,7 +63,6 @@ class MikyMediaBundle extends Bundle
         ));
     }
 
-
     /**
      * @param ContainerBuilder $container
      */
@@ -66,6 +73,14 @@ class MikyMediaBundle extends Bundle
         );
         if (class_exists('Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass')) {
             $container->addCompilerPass(DoctrineOrmMappingsPass::createXmlMappingDriver($mappings, array('miky_media.model_manager_name')));
+        }
+        if ($this->useDefaultEntities){
+            $mappingsBase = array(
+                realpath(__DIR__.'/Resources/config/doctrine-base') => 'Miky\Bundle\MediaBundle\Doctrine\Entity',
+            );
+            if (class_exists('Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass')) {
+                $container->addCompilerPass(DoctrineOrmMappingsPass::createXmlMappingDriver($mappingsBase, array('miky_media.entity_manager_name')));
+            }
         }
     }
 }

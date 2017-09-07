@@ -4,6 +4,9 @@
 
 namespace Miky\Bundle\MediaBundle\DependencyInjection;
 
+use Miky\Bundle\MediaBundle\Doctrine\Entity\Gallery;
+use Miky\Bundle\MediaBundle\Doctrine\Entity\GalleryHasMedia;
+use Miky\Bundle\MediaBundle\Doctrine\Entity\Media;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -15,6 +18,16 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
+    private $useDefaultEntities;
+
+    /**
+     * Configuration constructor.
+     */
+    public function __construct($useDefaultEntities)
+    {
+        $this->useDefaultEntities = $useDefaultEntities;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -417,19 +430,33 @@ class Configuration implements ConfigurationInterface
      */
     private function addModelSection(ArrayNodeDefinition $node)
     {
+        if ($this->useDefaultEntities) {
+            $node
+                ->children()
+                ->arrayNode('class')
+                ->addDefaultsIfNotSet()
+                ->children()
+                ->scalarNode('media')->defaultValue(Media::class)->end()
+                ->scalarNode('gallery')->defaultValue(Gallery::class)->end()
+                ->scalarNode('gallery_has_media')->defaultValue(GalleryHasMedia::class)->end()
+                ->scalarNode('category')->defaultValue('Miky\Bundle\\ClassificationBundle\\Entity\\Category')->end()
+                ->end()
+                ->end()
+                ->end();
+        } else {
         $node
             ->children()
-                ->arrayNode('class')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('media')->defaultValue('Miky\Bundle\\MediaBundle\\Entity\\Media')->end()
-                        ->scalarNode('gallery')->defaultValue('Miky\Bundle\\MediaBundle\\Entity\\Gallery')->end()
-                        ->scalarNode('gallery_has_media')->defaultValue('Miky\Bundle\\MediaBundle\\Entity\\GalleryHasMedia')->end()
-                        ->scalarNode('category')->defaultValue('Miky\Bundle\\ClassificationBundle\\Entity\\Category')->end()
-                    ->end()
-                ->end()
+            ->arrayNode('class')
+            ->addDefaultsIfNotSet()
+            ->children()
+            ->scalarNode('media')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('gallery')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('gallery_has_media')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('category')->defaultValue('Miky\Bundle\\ClassificationBundle\\Entity\\Category')->end()
             ->end()
-        ;
+            ->end()
+            ->end();
+        }
     }
 
     /**
