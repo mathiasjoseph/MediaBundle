@@ -26,7 +26,7 @@ class MikyMediaBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
-        $this->addRegisterMappingsPass($container);
+
         $container->addCompilerPass(new AddProviderCompilerPass());
         $container->addCompilerPass(new GlobalVariablesCompilerPass());
         $container->addCompilerPass(new SecurityContextCompilerPass());
