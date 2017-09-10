@@ -2,8 +2,6 @@
 
 namespace Miky\Bundle\MediaBundle\Doctrine\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Gallery
  */
