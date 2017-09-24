@@ -26,7 +26,7 @@ class MikyMediaExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $processor = new Processor();
-        $configuration = new Configuration($container->getParameter("miky_location.use_default_entities"));
+        $configuration = new Configuration($container->getParameter("miky_media.use_default_entities"));
 
         $config = $processor->processConfiguration($configuration, $configs);
 
