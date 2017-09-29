@@ -4,12 +4,15 @@
 
 namespace Miky\Bundle\MediaBundle\DependencyInjection;
 
+use Miky\Bundle\CoreBundle\DependencyInjection\AbstractCoreExtension;
 use Miky\Bundle\CoreBundle\Mapper\DoctrineCollector;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
@@ -18,8 +21,15 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @author     Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class MikyMediaExtension extends Extension
+class MikyMediaExtension  extends AbstractCoreExtension implements PrependExtensionInterface
 {
+
+    public function prepend(ContainerBuilder $container)
+    {
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/app'));
+        $loader->load('config.yml');
+    }
+
     /**
      * {@inheritdoc}
      */
