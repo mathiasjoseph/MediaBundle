@@ -40,7 +40,7 @@ class MikyMediaExtension  extends AbstractCoreExtension implements PrependExtens
 
         $config = $processor->processConfiguration($configuration, $configs);
 
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
         $loader->load('media.xml');
         $loader->load('provider.xml');
         $loader->load('twig.xml');
@@ -73,22 +73,23 @@ class MikyMediaExtension  extends AbstractCoreExtension implements PrependExtens
 
         $bundles = $container->getParameter('kernel.bundles');
 
-        if (isset($bundles['FOSRestBundle']) && isset($bundles['NelmioApiDocBundle'])) {
+        if ($this->isBundleExist("FOSRestBundle", $container)) {
+            $this->setBundlesRequired(array("NelmioApiDocBundle"), $container);
             $loader->load('api_form_doctrine_orm.xml');
-                $loader->load('api_controllers.xml');
         }
 
-        if (isset($bundles['SonataNotificationBundle'])) {
+        if ($this->isBundleExist('SonataNotificationBundle', $container)) {
             $loader->load('consumer.xml');
         }
 
-        if (isset($bundles['SonataFormatterBundle'])) {
+        if ($this->isBundleExist('SonataFormatterBundle', $container)) {
             $loader->load('formatter.xml');
         }
 
-        if (isset($bundles['SonataBlockBundle'])) {
+        if ($this->isBundleExist('SonataBlockBundle', $container)) {
             $loader->load('block.xml');
         }
+
 
         if (isset($bundles['SonataSeoBundle'])) {
             $loader->load('seo_block.xml');
@@ -204,7 +205,6 @@ class MikyMediaExtension  extends AbstractCoreExtension implements PrependExtens
         $container->setParameter('miky.media.media.class', $config['class']['media']);
         $container->setParameter('miky.media.gallery.class', $config['class']['gallery']);
 
-        $container->getDefinition('miky.media.form.type.media')->replaceArgument(1, $config['class']['media']);
     }
 
     /**

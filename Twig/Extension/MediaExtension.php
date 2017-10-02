@@ -43,15 +43,12 @@ class MediaExtension extends \Twig_Extension implements \Twig_Extension_InitRunt
         $this->mediaManager = $mediaManager;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTokenParsers()
     {
         return array(
-            new MediaTokenParser($this->getName()),
-            new ThumbnailTokenParser($this->getName()),
-            new PathTokenParser($this->getName()),
+            new MediaTokenParser(get_called_class()),
+            new ThumbnailTokenParser(get_called_class()),
+            new PathTokenParser(get_called_class()),
         );
     }
 

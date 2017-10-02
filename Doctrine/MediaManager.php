@@ -11,6 +11,13 @@ use Sonata\DatagridBundle\ProxyQuery\Doctrine\ProxyQuery;
 
 class MediaManager extends BaseEntityManager implements ManagerInterface
 {
+    public function findByToken($token){
+        return $this->findBy(array("token"=> $token));
+    }
+
+    public function findOneByToken($token){
+        return $this->findOneBy(array("token"=> $token));
+    }
     /**
      * {@inheritdoc}
      */

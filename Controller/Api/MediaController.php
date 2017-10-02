@@ -5,15 +5,18 @@
 namespace Miky\Bundle\MediaBundle\Controller\Api;
 
 use FOS\RestBundle\Context\Context;
+use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\Route;
 use FOS\RestBundle\Controller\Annotations\View;
+use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use FOS\RestBundle\View\View as FOSRestView;
 use JMS\Serializer\SerializationContext;
 use Miky\Bundle\MediaBundle\Model\MediaManagerInterface;
 use Miky\Bundle\MediaBundle\Provider\MediaProviderInterface;
 use Miky\Bundle\MediaBundle\Provider\Pool;
+use Miky\Component\Media\Model\Media;
 use Miky\Component\Media\Model\MediaInterface;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Sonata\DatagridBundle\Pager\PagerInterface;
@@ -33,35 +36,57 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @author Hugo Briand <briand@ekino.com>
  */
-class MediaController
+class MediaController extends FOSRestController
 {
-    /**
-     * @var MediaManagerInterface
-     */
-    protected $mediaManager;
 
     /**
-     * @var Pool
-     */
-    protected $mediaPool;
-
-    /**
-     * @var FormFactoryInterface
-     */
-    protected $formFactory;
-
-    /**
-     * Constructor.
+     * @param Request $request
+     * @Rest\Post(name="miky_media_api_media_upload", options={ "method_prefix" = false })
      *
-     * @param MediaManagerInterface $mediaManager
-     * @param Pool                  $mediaPool
-     * @param FormFactoryInterface  $formFactory
+     * @return Response
      */
-    public function __construct(MediaManagerInterface $mediaManager, Pool $mediaPool, FormFactoryInterface $formFactory)
+    public function uploadAction(Request $request)
     {
-        $this->mediaManager = $mediaManager;
-        $this->mediaPool = $mediaPool;
-        $this->formFactory = $formFactory;
+            $context = $request->get("context", "default");
+            $provider = $request->get("provider");
+            $mediaToken = $request->get("media_token");
+            $mediaManager= $this->get("miky.media.manager.media");
+            /** @var Media $media */
+            $media = $mediaManager->create();
+            $media->setBinaryContent($request->files->get('file'));
+            $media->setContext($context);
+            $media->setProviderName($provider);
+            $media->setToken($mediaToken);
+            $media->setTemporary(true);
+            $date = new \DateTime();
+            $date->add(new \DateInterval('PT1H'));
+            $media->setExpiresAt($date);
+            $mediaManager->save($media);
+
+        $view = $this->view($media, 200);
+
+        return $this->handleView($view);
+    }
+
+    /**
+     * @param Request $request
+     * @Rest\Post("/media/{id}/remove", name="miky_media_api_media_remove", options={ "method_prefix" = false })
+     * @return Response
+     */
+    public function removeAction(Request $request, $id)
+    {
+
+        $mediaManager= $this->get("miky.media.manager.media");
+        $media = $mediaManager->find($id);
+        if($media !=null){
+            $mediaManager->delete($media);
+            $result = array("removed" => true);
+        }else{
+            $result = array("removed" => false);
+        }
+        $view = $this->view($result, 200);
+
+        return $this->handleView($view);
     }
 
     /**
@@ -69,15 +94,15 @@ class MediaController
      *
      * @ApiDoc(
      *  resource=true,
-     *  output={"class"="Sonata\DatagridBundle\Pager\PagerInterface", "groups"="sonata_api_read"}
+     *  output={"class"="Sonata\DatagridBundle\Pager\PagerInterface", "groups"="miky_api_read"}
      * )
      *
-     * @QueryParam(name="page", requirements="\d+", default="1", description="Page for media list pagination")
-     * @QueryParam(name="count", requirements="\d+", default="10", description="Number of medias by page")
+     * @QueryParam(name="page", requirements="\d+", nullable=true, default="1", description="Page for media list pagination")
+     * @QueryParam(name="count", requirements="\d+", nullable=true, default="10", description="Number of medias by page")
      * @QueryParam(name="enabled", requirements="0|1", nullable=true, strict=true, description="Enabled/Disabled medias filter")
-     * @QueryParam(name="orderBy", array=true, requirements="ASC|DESC", nullable=true, strict=true, description="Order by array (key is field, value is direction)")
+     * @QueryParam(name="orderBy", map=true, requirements="ASC|DESC", nullable=true, strict=true, description="Order by array (key is field, value is direction)")
      *
-     * @View(serializerGroups="sonata_api_read", serializerEnableMaxDepthChecks=true)
+     * @View(serializerGroups="miky_api_read", serializerEnableMaxDepthChecks=true)
      *
      * @param ParamFetcherInterface $paramFetcher
      *
@@ -85,6 +110,7 @@ class MediaController
      */
     public function getMediaAction(ParamFetcherInterface $paramFetcher)
     {
+        $mediaManager= $this->get("miky.media.manager.media");
         $supportedCriteria = array(
             'enabled' => '',
         );
@@ -106,7 +132,7 @@ class MediaController
             $sort = array($sort => 'asc');
         }
 
-        return $this->mediaManager->getPager($criteria, $page, $limit, $sort);
+        return $mediaManager->getPager($criteria, $page, $limit, $sort);
     }
 
     /**
@@ -116,14 +142,14 @@ class MediaController
      *  requirements={
      *      {"name"="id", "dataType"="integer", "requirement"="\d+", "description"="media id"}
      *  },
-     *  output={"class"="Miky\Bundle\MediaBundle\Model\Media", "groups"="sonata_api_read"},
+     *  output={"class"="Miky\Bundle\MediaBundle\Model\Media", "groups"="miky_api_read"},
      *  statusCodes={
      *      200="Returned when successful",
      *      404="Returned when media is not found"
      *  }
      * )
      *
-     * @View(serializerGroups="sonata_api_read", serializerEnableMaxDepthChecks=true)
+     * @View(serializerGroups="miky_api_read", serializerEnableMaxDepthChecks=true)
      *
      * @param $id
      *
@@ -153,12 +179,13 @@ class MediaController
      */
     public function getMediumFormatsAction($id)
     {
+        $mediaPool = $this->get("miky.media.pool");
         $media = $this->getMedium($id);
 
         $formats = array('reference');
-        $formats = array_merge($formats, array_keys($this->mediaPool->getFormatNamesByContext($media->getContext())));
+        $formats = array_merge($formats, array_keys($mediaPool->getFormatNamesByContext($media->getContext())));
 
-        $provider = $this->mediaPool->getProvider($media->getProviderName());
+        $provider = $mediaPool->getProvider($media->getProviderName());
 
         $properties = array();
         foreach ($formats as $format) {
@@ -192,8 +219,9 @@ class MediaController
     public function getMediumBinaryAction($id, $format, Request $request)
     {
         $media = $this->getMedium($id);
+        $mediaPool = $this->get("miky.media.pool");
 
-        $response = $this->mediaPool->getProvider($media->getProviderName())->getDownloadResponse($media, $format, $this->mediaPool->getDownloadMode($media));
+        $response = $mediaPool->getProvider($media->getProviderName())->getDownloadResponse($media, $format, $mediaPool->getDownloadMode($media));
 
         if ($response instanceof BinaryFileResponse) {
             $response->prepare($request);
@@ -225,8 +253,8 @@ class MediaController
     public function deleteMediumAction($id)
     {
         $medium = $this->getMedium($id);
-
-        $this->mediaManager->delete($medium);
+        $mediaManager = $this->get("miky.media.manager.media");
+        $mediaManager->delete($medium);
 
         return array('deleted' => true);
     }
@@ -241,7 +269,7 @@ class MediaController
      *      {"name"="id", "dataType"="integer", "requirement"="\d+", "description"="medium identifier"}
      *  },
      *  input={"class"="miky_media_api_form_media", "name"="", "groups"={"sonata_api_write"}},
-     *  output={"class"="Miky\Bundle\MediaBundle\Model\Media", "groups"={"sonata_api_read"}},
+     *  output={"class"="Miky\Bundle\MediaBundle\Model\Media", "groups"={"miky_api_read"}},
      *  statusCodes={
      *      200="Returned when successful",
      *      400="Returned when an error has occurred while medium update",
@@ -259,9 +287,9 @@ class MediaController
     public function putMediumAction($id, Request $request)
     {
         $medium = $this->getMedium($id);
-
+        $mediaPool = $this->get("miky.media.pool");
         try {
-            $provider = $this->mediaPool->getProvider($medium->getProviderName());
+            $provider = $mediaPool->getProvider($medium->getProviderName());
         } catch (\RuntimeException $ex) {
             throw new NotFoundHttpException($ex->getMessage(), $ex);
         } catch (\InvalidArgumentException $ex) {
@@ -279,7 +307,7 @@ class MediaController
      * @ApiDoc(
      *  resource=true,
      *  input={"class"="miky_media_api_form_media", "name"="", "groups"={"sonata_api_write"}},
-     *  output={"class"="Miky\Bundle\MediaBundle\Model\Media", "groups"={"sonata_api_read"}},
+     *  output={"class"="Miky\Bundle\MediaBundle\Model\Media", "groups"={"miky_api_read"}},
      *  statusCodes={
      *      200="Returned when successful",
      *      400="Returned when an error has occurred while medium creation",
@@ -298,11 +326,13 @@ class MediaController
      */
     public function postProviderMediumAction($provider, Request $request)
     {
-        $medium = $this->mediaManager->create();
+        $mediaManager = $this->get("miky.media.manager.media");
+        $mediaPool = $this->get("miky.media.pool");
+        $medium = $mediaManager->create();
         $medium->setProviderName($provider);
 
         try {
-            $mediaProvider = $this->mediaPool->getProvider($provider);
+            $mediaProvider = $mediaPool->getProvider($provider);
         } catch (\RuntimeException $ex) {
             throw new NotFoundHttpException($ex->getMessage(), $ex);
         } catch (\InvalidArgumentException $ex) {
@@ -317,14 +347,14 @@ class MediaController
      *
      * @ApiDoc(
      *  input={"class"="Miky\Bundle\MediaBundle\Model\Media", "groups"={"sonata_api_write"}},
-     *  output={"class"="Miky\Bundle\MediaBundle\Model\Media", "groups"="sonata_api_read"},
+     *  output={"class"="Miky\Bundle\MediaBundle\Model\Media", "groups"="miky_api_read"},
      *  statusCodes={
      *      200="Returned when successful",
      *      404="Returned when media is not found"
      *  }
      * )
      *
-     * @View(serializerGroups="sonata_api_read", serializerEnableMaxDepthChecks=true)
+     * @View(serializerGroups="miky_api_read", serializerEnableMaxDepthChecks=true)
      *
      * @param $id
      * @param Request $request A Symfony request
@@ -335,11 +365,13 @@ class MediaController
      */
     public function putMediumBinaryContentAction($id, Request $request)
     {
+        $mediaManager = $this->get("miky.media.manager.media");
+
         $media = $this->getMedium($id);
 
         $media->setBinaryContent($request);
 
-        $this->mediaManager->save($media);
+        $mediaManager->save($media);
 
         return $media;
     }
@@ -356,7 +388,9 @@ class MediaController
      */
     protected function getMedium($id = null)
     {
-        $media = $this->mediaManager->findOneBy(array('id' => $id));
+        $mediaManager = $this->get("miky.media.manager.media");
+
+        $media = $mediaManager->findOneBy(array('id' => $id));
 
         if (null === $media) {
             throw new NotFoundHttpException(sprintf('Media (%d) was not found', $id));
@@ -376,7 +410,9 @@ class MediaController
      */
     protected function handleWriteMedium(Request $request, MediaInterface $media, MediaProviderInterface $provider)
     {
-        $form = $this->formFactory->createNamed(null, 'miky_media_api_form_media', $media, array(
+        $mediaManager = $this->get("miky.media.manager.media");
+        $formFactory = $this->get("form.factory");
+        $form = $formFactory->createNamed(null, 'miky_media_api_form_media', $media, array(
             'provider_name' => $provider->getName(),
             'csrf_protection' => false,
         ));
@@ -385,26 +421,20 @@ class MediaController
 
         if ($form->isValid()) {
             $media = $form->getData();
-            $this->mediaManager->save($media);
+            $mediaManager->save($media);
 
             $view = FOSRestView::create($media);
 
-            // BC for FOSRestBundle < 2.0
-            if (method_exists($view, 'setSerializationContext')) {
-                $serializationContext = SerializationContext::create();
-                $serializationContext->setGroups(array('sonata_api_read'));
-                $serializationContext->enableMaxDepthChecks();
-                $view->setSerializationContext($serializationContext);
-            } else {
+
                 $context = new Context();
-                $context->setGroups(array('sonata_api_read'));
-                $context->setMaxDepth(0);
+                $context->setGroups(array('miky_api_read'));
                 $view->setContext($context);
-            }
+
 
             return $view;
         }
 
         return $form;
     }
+
 }
