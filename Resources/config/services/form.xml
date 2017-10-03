@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="Miky\Bundle\MediaBundle\Form\Type\MediaType">
+            <tag name="form.type" alias="miky_media_type"/>
+            <argument type="service" id="miky.media.pool"/>
+            <argument>%miky.media.media.class%</argument>
+        </service>
+        <service id="Miky\Bundle\MediaBundle\Form\Type\DropzoneType">
+            <tag name="form.type" alias="miky_dropzone_type"/>
+            <argument type="service" id="miky.media.pool"/>
+            <argument type="service" id="miky.media.manager.media"/>
+            <argument>%miky.media.media.class%</argument>
+            <argument type="service" id="security.csrf.token_generator"/>
+        </service>
+        <service id="Miky\Bundle\MediaBundle\Form\Type\DropzoneMultipleType">
+            <tag name="form.type" alias="miky_dropzone_type"/>
+            <argument type="service" id="miky.media.pool"/>
+            <argument type="service" id="miky.media.manager.media"/>
+            <argument type="service" id="security.csrf.token_generator"/>
+        </service>
+    </services>
+</container>

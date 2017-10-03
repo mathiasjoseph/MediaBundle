@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="miky.media.resizer.simple.class">Miky\Bundle\MediaBundle\Resizer\SimpleResizer</parameter>
+        <parameter key="miky.media.resizer.square.class">Miky\Bundle\MediaBundle\Resizer\SquareResizer</parameter>
+        <parameter key="miky.media.adapter.image.gd.class">Imagine\Gd\Imagine</parameter>
+        <parameter key="miky.media.adapter.image.imagick.class">Imagine\Imagick\Imagine</parameter>
+        <parameter key="miky.media.adapter.image.gmagick.class">Imagine\Gmagick\Imagine</parameter>
+    </parameters>
+    <services>
+        <!-- CDN abstraction service -->
+        <service id="miky.media.cdn.server" class="Miky\Bundle\MediaBundle\CDN\Server">
+            <argument/>
+        </service>
+        <service id="miky.media.cdn.panther" class="Miky\Bundle\MediaBundle\CDN\PantherPortal">
+            <argument/>
+            <argument/>
+            <argument/>
+            <argument/>
+        </service>
+        <service id="miky.media.cdn.cloudfront" class="Miky\Bundle\MediaBundle\CDN\CloudFront">
+            <argument/>
+            <argument/>
+            <argument/>
+            <argument/>
+        </service>
+        <service id="miky.media.cdn.fallback" class="Miky\Bundle\MediaBundle\CDN\Fallback">
+            <argument/>
+            <argument/>
+        </service>
+    </services>
+</container>

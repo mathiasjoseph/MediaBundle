@@ -12,8 +12,9 @@ use Miky\Bundle\MediaBundle\Generator\GeneratorInterface;
 use Miky\Bundle\MediaBundle\Metadata\MetadataBuilderInterface;
 use Miky\Bundle\MediaBundle\Thumbnail\ThumbnailInterface;
 use Miky\Component\Media\Model\MediaInterface;
-use Sonata\AdminBundle\Form\FormMapper;
+
 use Sonata\CoreBundle\Validator\ErrorElement;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\File\File;
@@ -78,65 +79,18 @@ class FileProvider extends BaseProvider
         return $this->getFilesystem()->get($this->getReferenceImage($media), true);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildEditForm(FormMapper $formMapper)
-    {
-        $formMapper->add('name');
-        $formMapper->add('enabled', null, array('required' => false));
-        $formMapper->add('authorName');
-        $formMapper->add('cdnIsFlushable');
-        $formMapper->add('description');
-        $formMapper->add('copyright');
-        $formMapper->add(
-            'binaryContent',
-            // NEXT_MAJOR: Remove ternary and keep 'Symfony\Component\Form\Extension\Core\Type\FileType' value
-            // (when requirement of Symfony is >= 2.8)
-            method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
-                ? 'Symfony\Component\Form\Extension\Core\Type\FileType'
-                : 'file',
-            array('required' => false)
-        );
-    }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildCreateForm(FormMapper $formMapper)
-    {
-        $formMapper->add(
-            'binaryContent',
-            // NEXT_MAJOR: Remove ternary and keep 'Symfony\Component\Form\Extension\Core\Type\FileType' value
-            // (when requirement of Symfony is >= 2.8)
-            method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
-                ? 'Symfony\Component\Form\Extension\Core\Type\FileType'
-                : 'file',
-            array(
-                'constraints' => array(
-                    new NotBlank(),
-                    new NotNull(),
-                ),
-            )
-        );
-    }
 
     /**
      * {@inheritdoc}
      */
     public function buildMediaType(FormBuilder $formBuilder)
     {
-        // NEXT_MAJOR: Remove $fileType variable and inline 'Symfony\Component\Form\Extension\Core\Type\FileType'
-        // (when requirement of Symfony is >= 2.8)
-        $fileType = method_exists('Symfony\Component\Form\AbstractType', 'getBlockPrefix')
-            ? 'Symfony\Component\Form\Extension\Core\Type\FileType'
-            : 'file';
-
         if ($formBuilder->getOption('context') == 'api') {
-            $formBuilder->add('binaryContent', $fileType);
+            $formBuilder->add('binaryContent', FileType::class);
             $formBuilder->add('contentType');
         } else {
-            $formBuilder->add('binaryContent', $fileType, array(
+            $formBuilder->add('binaryContent', FileType::class, array(
                 'required' => false,
                 'label' => 'widget_label_binary_content',
             ));

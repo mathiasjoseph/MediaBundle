@@ -7,7 +7,6 @@ namespace Miky\Bundle\MediaBundle\Provider;
 use Gaufrette\Filesystem;
 use Miky\Bundle\MediaBundle\Resizer\ResizerInterface;
 use Miky\Component\Media\Model\MediaInterface;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\CoreBundle\Model\MetadataInterface;
 use Sonata\CoreBundle\Validator\ErrorElement;
 use Symfony\Component\Form\FormBuilder;
@@ -97,19 +96,7 @@ interface MediaProviderInterface
      */
     public function postRemove(MediaInterface $media);
 
-    /**
-     * build the related create form.
-     *
-     * @param FormMapper $formMapper
-     */
-    public function buildCreateForm(FormMapper $formMapper);
 
-    /**
-     * build the related create form.
-     *
-     * @param FormMapper $formMapper
-     */
-    public function buildEditForm(FormMapper $formMapper);
 
     /**
      * @param MediaInterface $media

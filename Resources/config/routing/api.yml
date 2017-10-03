@@ -1,0 +1,5 @@
+miky_media_api_media:
+    type:     rest
+    resource: Miky\Bundle\MediaBundle\Controller\Api\MediaController
+    options:
+        expose: true
