@@ -1,3 +1,6 @@
 miky_media:
     image: Image
+    images: Images
     profile_image: Photo de profil
+    change_picture: Changer l'image
+    documents: Documents
