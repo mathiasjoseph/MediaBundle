@@ -1,4 +1,0 @@
-miky_media_admin_page:
-    resource: "@MikyMediaBundle/Resources/config/routing/api.yml"
-    prefix : /api
-
