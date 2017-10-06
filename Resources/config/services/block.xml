@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="miky.media.block.media.class">Miky\Bundle\MediaBundle\Block\MediaBlockService</parameter>
+        <parameter key="miky.media.block.feature_media.class">Miky\Bundle\MediaBundle\Block\FeatureMediaBlockService</parameter>
+        <parameter key="miky.media.block.gallery.class">Miky\Bundle\MediaBundle\Block\GalleryBlockService</parameter>
+        <parameter key="miky.media.block.gallery_list.class">Miky\Bundle\MediaBundle\Block\GalleryListBlockService</parameter>
+    </parameters>
+    <services>
+        <service id="miky.media.block.media" class="%miky.media.block.media.class%">
+            <tag name="sonata.block"/>
+            <argument>miky.media.block.media</argument>
+            <argument type="service" id="templating"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="miky.media.manager.media"/>
+        </service>
+        <service id="miky.media.block.feature_media" class="%miky.media.block.feature_media.class%">
+            <tag name="sonata.block"/>
+            <argument>miky.media.block.feature_media</argument>
+            <argument type="service" id="templating"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="miky.media.manager.media"/>
+        </service>
+        <service id="miky.media.block.gallery" class="%miky.media.block.gallery.class%">
+            <tag name="sonata.block"/>
+            <argument>miky.media.block.gallery</argument>
+            <argument type="service" id="templating"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="miky.media.manager.gallery"/>
+        </service>
+        <service id="miky.media.block.gallery_list" class="%miky.media.block.gallery_list.class%">
+            <tag name="sonata.block"/>
+            <argument>miky.media.block.gallery_list</argument>
+            <argument type="service" id="templating"/>
+            <argument type="service" id="miky.media.manager.gallery"/>
+            <argument type="service" id="miky.media.pool"/>
+        </service>
+    </services>
+</container>
